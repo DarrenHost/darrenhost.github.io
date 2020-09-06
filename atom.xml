@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://darrenvip.github.io</id>
-    <title>Darren.X</title>
-    <updated>2020-09-06T21:36:55.158Z</updated>
+    <title>Darren.X Factory</title>
+    <updated>2020-09-06T22:14:38.688Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://darrenvip.github.io"/>
     <link rel="self" href="https://darrenvip.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
+    <subtitle>给岁月以文明，而不是给文明以岁月</subtitle>
     <logo>https://darrenvip.github.io/images/avatar.png</logo>
     <icon>https://darrenvip.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, Darren.X</rights>
+    <rights>All rights reserved 2020, Darren.X Factory</rights>
     <entry>
         <title type="html"><![CDATA[Hello World]]></title>
-        <id>https://darrenvip.github.io/post/hello-gridea/</id>
-        <link href="https://darrenvip.github.io/post/hello-gridea/">
+        <id>https://darrenvip.github.io/post/hello-world/</id>
+        <link href="https://darrenvip.github.io/post/hello-world/">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <content type="html"><![CDATA[<p>😘 Enjoy~</p>
