@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://darrenvip.github.io</id>
+    <id>https://darren.host</id>
     <title>Darren.X</title>
-    <updated>2020-09-07T10:08:56.256Z</updated>
+    <updated>2020-09-07T10:10:54.942Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://darrenvip.github.io"/>
-    <link rel="self" href="https://darrenvip.github.io/atom.xml"/>
+    <link rel="alternate" href="https://darren.host"/>
+    <link rel="self" href="https://darren.host/atom.xml"/>
     <subtitle>给岁月以文明，而不是给文明以岁月 - 刘慈欣</subtitle>
-    <logo>https://darrenvip.github.io/images/avatar.png</logo>
-    <icon>https://darrenvip.github.io/favicon.ico</icon>
+    <logo>https://darren.host/images/avatar.png</logo>
+    <icon>https://darren.host/favicon.ico</icon>
     <rights>All rights reserved 2020, Darren.X</rights>
     <entry>
         <title type="html"><![CDATA[树莓派使用蓝牙设置wifi网络]]></title>
-        <id>https://darrenvip.github.io/post/shu-mei-pai-shi-yong-lan-ya-she-zhi-wifi-wang-luo/</id>
-        <link href="https://darrenvip.github.io/post/shu-mei-pai-shi-yong-lan-ya-she-zhi-wifi-wang-luo/">
+        <id>https://darren.host/post/shu-mei-pai-shi-yong-lan-ya-she-zhi-wifi-wang-luo/</id>
+        <link href="https://darren.host/post/shu-mei-pai-shi-yong-lan-ya-she-zhi-wifi-wang-luo/">
         </link>
         <updated>2020-09-07T01:44:18.000Z</updated>
         <content type="html"><![CDATA[<p>在树莓派使用过程中，很多人都有遇到过这样的问题，经常由于工作场所变化，在无显示器和鼠标的情况下无法方便快捷对树莓派设置wifi网络。</p>
@@ -33,7 +33,7 @@ $ sudo apt-get install python-bluez
 </code></pre>
 <h2 id="2-启动bluetooh-守护程序">2 启动Bluetooh 守护程序</h2>
 <p>通过输入以下命令来编辑 /etc/systemd/system/dbus-org.bluez.service</p>
-<pre><code class="language-![](https://darrenvip.github.io/post-images/1599462180234.png)">
+<pre><code class="language-![](https://darren.host/post-images/1599462180234.png)">
 $ sudo nano /etc/systemd/system/dbus-org.bluez.service
 
 </code></pre>
@@ -194,8 +194,8 @@ $ sudo python run.py
     </entry>
     <entry>
         <title type="html"><![CDATA[Hello World]]></title>
-        <id>https://darrenvip.github.io/post/hello-world/</id>
-        <link href="https://darrenvip.github.io/post/hello-world/">
+        <id>https://darren.host/post/hello-world/</id>
+        <link href="https://darren.host/post/hello-world/">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <content type="html"><![CDATA[<p>😘 Enjoy~</p>
