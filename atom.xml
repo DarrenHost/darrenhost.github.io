@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://darrenvip.github.io</id>
-    <title>Darren.X Factory</title>
-    <updated>2020-09-07T10:06:00.298Z</updated>
+    <title>Darren.X</title>
+    <updated>2020-09-07T10:08:56.256Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://darrenvip.github.io"/>
     <link rel="self" href="https://darrenvip.github.io/atom.xml"/>
     <subtitle>给岁月以文明，而不是给文明以岁月 - 刘慈欣</subtitle>
     <logo>https://darrenvip.github.io/images/avatar.png</logo>
     <icon>https://darrenvip.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, Darren.X Factory</rights>
+    <rights>All rights reserved 2020, Darren.X</rights>
     <entry>
         <title type="html"><![CDATA[树莓派使用蓝牙设置wifi网络]]></title>
         <id>https://darrenvip.github.io/post/shu-mei-pai-shi-yong-lan-ya-she-zhi-wifi-wang-luo/</id>
