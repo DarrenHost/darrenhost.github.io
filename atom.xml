@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://darrenvip.github.io</id>
     <title>Darren.X Factory</title>
-    <updated>2020-09-07T06:27:22.328Z</updated>
+    <updated>2020-09-07T06:44:57.657Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://darrenvip.github.io"/>
     <link rel="self" href="https://darrenvip.github.io/atom.xml"/>
@@ -27,31 +27,31 @@
 </ul>
 <h2 id="1-在raspbian上安装bluez">1 在Raspbian上安装Bluez</h2>
 <p>首先从Raspbian终端输入以下命令，安装Python蓝牙库Bluez：</p>
-<pre><code class="language-key">
+<pre><code>
 $ sudo apt-get install python-bluez
 
 </code></pre>
 <h2 id="2-启动bluetooh-守护程序">2 启动Bluetooh 守护程序</h2>
 <p>通过输入以下命令来编辑 /etc/systemd/system/dbus-org.bluez.service</p>
-<pre><code class="language-key">
+<pre><code>
 $ sudo nano /etc/systemd/system/dbus-org.bluez.service
 
 </code></pre>
 <p>并修改 ExecStart 参数<br>
 ExecStart = / usr / lib / bluetooth / bluetoothd –C</p>
 <h2 id="3-加载串口配置">3 加载串口配置</h2>
-<pre><code class="language-key">
+<pre><code>
 $ sudo sdptool add SP
 
 </code></pre>
 <h2 id="4-重启树莓派">4 重启树莓派</h2>
-<pre><code class="language-key">
+<pre><code>
 $ sudo reboot
 
 </code></pre>
 <h2 id="5-将pi的蓝牙与android配对">5 将Pi的蓝牙与Android配对</h2>
 <p>打开手机的蓝牙，然后将手机与Raspberry Pi配对。接下来，在您的Pi上输入：</p>
-<pre><code class="language-key">
+<pre><code>
 $ bluetoothctl
 power on
 discoverable on
@@ -59,7 +59,7 @@ scan on
 
 </code></pre>
 <p>您的手机将出现在可用设备列表中。信任并配对。</p>
-<pre><code class="language-key">
+<pre><code>
 $ trust &lt;PHONE_ADDRESS&gt;
 $ pair  &lt;PHONE_ADDRESS&gt;
 
@@ -67,8 +67,7 @@ $ pair  &lt;PHONE_ADDRESS&gt;
 <p>要退出Bluetooth ctl，请输入quit命令：</p>
 <p>如果发现可以使用Raspbian的UI轻松设置蓝牙，则也可以跳过上述设置。通过</p>
 <h2 id="6-蓝牙配对后通过键入nano命令并复制粘贴源代码将python脚本直接添加到raspbian中并执行">6 蓝牙配对后，通过键入nano命令并复制/粘贴源代码将Python脚本直接添加到Raspbian中并执行：</h2>
-<pre><code class="language-key">
-#!/usr/bin/env python
+<pre><code>#!/usr/bin/env python
 import os
 from bluetooth import *
 from wifi import Cell, Scheme

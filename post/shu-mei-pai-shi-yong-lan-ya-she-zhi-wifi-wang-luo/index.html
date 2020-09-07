@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>树莓派使用蓝牙设置wifi网络 | Darren.X Factory</title>
-<link rel="shortcut icon" href="https://darrenvip.github.io/favicon.ico?v=1599460032633">
+<link rel="shortcut icon" href="https://darrenvip.github.io/favicon.ico?v=1599461092844">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://darrenvip.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="树莓派使用蓝牙设置wifi网络 | Darren.X Factory - Atom Feed" href="https://darrenvip.github.io/atom.xml">
@@ -22,7 +22,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://darrenvip.github.io">
-  <img class="avatar" src="https://darrenvip.github.io/images/avatar.png?v=1599460032633" alt="">
+  <img class="avatar" src="https://darrenvip.github.io/images/avatar.png?v=1599461092844" alt="">
   </a>
   <h1 class="site-title">
     Darren.X Factory
@@ -126,31 +126,31 @@
 </ul>
 <h2 id="1-在raspbian上安装bluez">1 在Raspbian上安装Bluez</h2>
 <p>首先从Raspbian终端输入以下命令，安装Python蓝牙库Bluez：</p>
-<pre><code class="language-key">
+<pre><code>
 $ sudo apt-get install python-bluez
 
 </code></pre>
 <h2 id="2-启动bluetooh-守护程序">2 启动Bluetooh 守护程序</h2>
 <p>通过输入以下命令来编辑 /etc/systemd/system/dbus-org.bluez.service</p>
-<pre><code class="language-key">
+<pre><code>
 $ sudo nano /etc/systemd/system/dbus-org.bluez.service
 
 </code></pre>
 <p>并修改 ExecStart 参数<br>
 ExecStart = / usr / lib / bluetooth / bluetoothd –C</p>
 <h2 id="3-加载串口配置">3 加载串口配置</h2>
-<pre><code class="language-key">
+<pre><code>
 $ sudo sdptool add SP
 
 </code></pre>
 <h2 id="4-重启树莓派">4 重启树莓派</h2>
-<pre><code class="language-key">
+<pre><code>
 $ sudo reboot
 
 </code></pre>
 <h2 id="5-将pi的蓝牙与android配对">5 将Pi的蓝牙与Android配对</h2>
 <p>打开手机的蓝牙，然后将手机与Raspberry Pi配对。接下来，在您的Pi上输入：</p>
-<pre><code class="language-key">
+<pre><code>
 $ bluetoothctl
 power on
 discoverable on
@@ -158,7 +158,7 @@ scan on
 
 </code></pre>
 <p>您的手机将出现在可用设备列表中。信任并配对。</p>
-<pre><code class="language-key">
+<pre><code>
 $ trust &lt;PHONE_ADDRESS&gt;
 $ pair  &lt;PHONE_ADDRESS&gt;
 
@@ -166,8 +166,7 @@ $ pair  &lt;PHONE_ADDRESS&gt;
 <p>要退出Bluetooth ctl，请输入quit命令：</p>
 <p>如果发现可以使用Raspbian的UI轻松设置蓝牙，则也可以跳过上述设置。通过</p>
 <h2 id="6-蓝牙配对后通过键入nano命令并复制粘贴源代码将python脚本直接添加到raspbian中并执行">6 蓝牙配对后，通过键入nano命令并复制/粘贴源代码将Python脚本直接添加到Raspbian中并执行：</h2>
-<pre><code class="language-key">
-#!/usr/bin/env python
+<pre><code>#!/usr/bin/env python
 import os
 from bluetooth import *
 from wifi import Cell, Scheme
