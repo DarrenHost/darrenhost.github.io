@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://darren.host</id>
+    <id>https://darrenvip.github.io</id>
     <title>Darren.X</title>
     <updated>2021-07-25T02:10:17.015Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://darren.host"/>
-    <link rel="self" href="https://darren.host/atom.xml"/>
+    <link rel="alternate" href="https://darrenvip.github.io"/>
+    <link rel="self" href="https://darrenvip.github.io/atom.xml"/>
     <subtitle>给岁月以文明，而不是给文明以岁月 - 刘慈欣</subtitle>
-    <logo>https://darren.host/images/avatar.png</logo>
-    <icon>https://darren.host/favicon.ico</icon>
+    <logo>https://darrenvip.github.io/images/avatar.png</logo>
+    <icon>https://darrenvip.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Darren.X</rights>
     <entry>
         <title type="html"><![CDATA[甲虫级（1.36kg）格斗机器人制作]]></title>
-        <id>https://darren.host/post/jia-chong-ji-136kgge-dou-ji-qi-ren-zhi-zuo/</id>
-        <link href="https://darren.host/post/jia-chong-ji-136kgge-dou-ji-qi-ren-zhi-zuo/">
+        <id>https://darrenvip.github.io/post/jia-chong-ji-136kgge-dou-ji-qi-ren-zhi-zuo/</id>
+        <link href="https://darrenvip.github.io/post/jia-chong-ji-136kgge-dou-ji-qi-ren-zhi-zuo/">
         </link>
         <updated>2020-09-08T04:46:54.000Z</updated>
         <content type="html"><![CDATA[<h2 id="设计稿">设计稿</h2>
-<figure data-type="image" tabindex="1"><img src="https://darren.host/post-images/1599541623157.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="2"><img src="https://darren.host/post-images/1599541634487.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="3"><img src="https://darren.host/post-images/1599542085763.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="4"><img src="https://darren.host/post-images/1599542249018.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://darrenvip.github.io/post-images/1599541623157.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://darrenvip.github.io/post-images/1599541634487.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://darrenvip.github.io/post-images/1599542085763.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://darrenvip.github.io/post-images/1599542249018.png" alt="" loading="lazy"></figure>
 <h2 id="各个部件">各个部件</h2>
 <h3 id="一体cnc-航空铝合金机身">一体CNC 航空铝合金机身</h3>
-<figure data-type="image" tabindex="5"><img src="https://darren.host/post-images/1599540637877.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://darrenvip.github.io/post-images/1599540637877.jpg" alt="" loading="lazy"></figure>
 <p>做了两版本，第一版超重了 😱</p>
 <h3 id="线切割钛合金前铲牙">线切割钛合金前铲牙</h3>
-<figure data-type="image" tabindex="6"><img src="https://darren.host/post-images/1599540719825.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://darrenvip.github.io/post-images/1599540719825.jpg" alt="" loading="lazy"></figure>
 <p>这一对小小的钛合金牙真是肉疼了，1000 人民币一副 😛</p>
 <h3 id="3d打印的tpu前侧挡板">3D打印的TPU前侧挡板</h3>
-<figure data-type="image" tabindex="7"><img src="https://darren.host/post-images/1599540798399.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://darrenvip.github.io/post-images/1599540798399.jpg" alt="" loading="lazy"></figure>
 <p>这个也是打印的几版，我的3D打印机加热玻璃板只支持PLA，另外一块玻璃板已经很久没找到了。。。</p>
 <h3 id="cnc-两侧护板">CNC 两侧护板</h3>
-<figure data-type="image" tabindex="8"><img src="https://darren.host/post-images/1599540985512.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="8"><img src="https://darrenvip.github.io/post-images/1599540985512.jpg" alt="" loading="lazy"></figure>
 <h3 id="自己设计的减速箱">自己设计的减速箱</h3>
-<figure data-type="image" tabindex="9"><img src="https://darren.host/post-images/1599541659233.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="9"><img src="https://darrenvip.github.io/post-images/1599541659233.jpg" alt="" loading="lazy"></figure>
 <h3 id="武器支架">武器支架</h3>
-<figure data-type="image" tabindex="10"><img src="https://darren.host/post-images/1599542236839.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="10"><img src="https://darrenvip.github.io/post-images/1599542236839.jpg" alt="" loading="lazy"></figure>
 <h2 id="最后成品">最后成品</h2>
-<figure data-type="image" tabindex="11"><img src="https://darren.host/post-images/1599540544678.jpg" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="12"><img src="https://darren.host/post-images/1599540577202.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="11"><img src="https://darrenvip.github.io/post-images/1599540544678.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="12"><img src="https://darrenvip.github.io/post-images/1599540577202.jpg" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[树莓派使用蓝牙设置wifi网络]]></title>
-        <id>https://darren.host/post/shu-mei-pai-shi-yong-lan-ya-she-zhi-wifi-wang-luo/</id>
-        <link href="https://darren.host/post/shu-mei-pai-shi-yong-lan-ya-she-zhi-wifi-wang-luo/">
+        <id>https://darrenvip.github.io/post/shu-mei-pai-shi-yong-lan-ya-she-zhi-wifi-wang-luo/</id>
+        <link href="https://darrenvip.github.io/post/shu-mei-pai-shi-yong-lan-ya-she-zhi-wifi-wang-luo/">
         </link>
         <updated>2020-09-07T01:44:18.000Z</updated>
         <content type="html"><![CDATA[<p>在树莓派使用过程中，很多人都有遇到过这样的问题，经常由于工作场所变化，在无显示器和鼠标的情况下无法方便快捷对树莓派设置wifi网络。</p>
@@ -65,7 +65,7 @@ $ sudo apt-get install python-bluez
 </code></pre>
 <h2 id="2-启动bluetooh-守护程序">2 启动Bluetooh 守护程序</h2>
 <p>通过输入以下命令来编辑 /etc/systemd/system/dbus-org.bluez.service</p>
-<pre><code class="language-![](https://darren.host/post-images/1599462180234.png)">
+<pre><code class="language-![](https://darrenvip.github.io/post-images/1599462180234.png)">
 $ sudo nano /etc/systemd/system/dbus-org.bluez.service
 
 </code></pre>
@@ -226,8 +226,8 @@ $ sudo python run.py
     </entry>
     <entry>
         <title type="html"><![CDATA[Hello World]]></title>
-        <id>https://darren.host/post/hello-world/</id>
-        <link href="https://darren.host/post/hello-world/">
+        <id>https://darrenvip.github.io/post/hello-world/</id>
+        <link href="https://darrenvip.github.io/post/hello-world/">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <content type="html"><![CDATA[<p>😘 Enjoy~</p>
