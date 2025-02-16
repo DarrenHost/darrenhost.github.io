@@ -1,0 +1,406 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>树莓派使用蓝牙设置wifi网络 | Darren.X</title>
+<link rel="shortcut icon" href="https://darren.host/favicon.ico?v=1627178711416">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://darren.host/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="树莓派使用蓝牙设置wifi网络 | Darren.X - Atom Feed" href="https://darren.host/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="在树莓派使用过程中，很多人都有遇到过这样的问题，经常由于工作场所变化，在无显示器和鼠标的情况下无法方便快捷对树莓派设置wifi网络。
+在物联网场景下，成熟的方案是使用蓝牙为设备设置网络，在本教程中，我想向您展示一种简单的方法，可以通过蓝牙仅..." />
+    <meta name="keywords" content="物联网,玩物,代码" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://darren.host">
+  <img class="avatar" src="https://darren.host/images/avatar.png?v=1627178711416" alt="">
+  </a>
+  <h1 class="site-title">
+    Darren.X
+  </h1>
+  <p class="site-description">
+    给岁月以文明，而不是给文明以岁月 - 刘慈欣
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/tag/maker" class="menu">
+          玩物
+        </a>
+      
+    
+      
+        <a href="/tag/coding" class="menu">
+          代码
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              树莓派使用蓝牙设置wifi网络
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-09-07
+              </span>
+              <span>
+                5 min read
+              </span>
+              
+                <a href="https://darren.host/tag/7tXi0mByB/" class="post-tag">
+                  # 物联网
+                </a>
+              
+                <a href="https://darren.host/tag/maker/" class="post-tag">
+                  # 玩物
+                </a>
+              
+                <a href="https://darren.host/tag/coding/" class="post-tag">
+                  # 代码
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://darren.host/post-images/shu-mei-pai-shi-yong-lan-ya-she-zhi-wifi-wang-luo.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>在树莓派使用过程中，很多人都有遇到过这样的问题，经常由于工作场所变化，在无显示器和鼠标的情况下无法方便快捷对树莓派设置wifi网络。</p>
+<p>在物联网场景下，成熟的方案是使用蓝牙为设备设置网络，在本教程中，我想向您展示一种简单的方法，可以通过蓝牙仅使用Android手机为Raspberry Pi配置Wi-Fi网络。</p>
+<h2 id="所需材料">所需材料</h2>
+<p>首先，您需要：</p>
+<ul>
+<li>树莓派3</li>
+<li>Android手机</li>
+<li>Python脚本</li>
+</ul>
+<h2 id="1-在raspbian上安装bluez">1 在Raspbian上安装Bluez</h2>
+<p>首先从Raspbian终端输入以下命令，安装Python蓝牙库Bluez：</p>
+<pre><code>
+$ sudo apt-get install python-bluez
+
+</code></pre>
+<h2 id="2-启动bluetooh-守护程序">2 启动Bluetooh 守护程序</h2>
+<p>通过输入以下命令来编辑 /etc/systemd/system/dbus-org.bluez.service</p>
+<pre><code class="language-![](https://darren.host/post-images/1599462180234.png)">
+$ sudo nano /etc/systemd/system/dbus-org.bluez.service
+
+</code></pre>
+<p>并修改 ExecStart 参数<br>
+ExecStart = / usr / lib / bluetooth / bluetoothd –C</p>
+<h2 id="3-加载串口配置">3 加载串口配置</h2>
+<pre><code>
+$ sudo sdptool add SP
+
+</code></pre>
+<h2 id="4-重启树莓派">4 重启树莓派</h2>
+<pre><code>
+$ sudo reboot
+
+</code></pre>
+<h2 id="5-将pi的蓝牙与android配对">5 将Pi的蓝牙与Android配对</h2>
+<p>打开手机的蓝牙，然后将手机与Raspberry Pi配对。接下来，在您的Pi上输入：</p>
+<pre><code>
+$ bluetoothctl
+power on
+discoverable on
+scan on
+
+</code></pre>
+<p>您的手机将出现在可用设备列表中。信任并配对。</p>
+<pre><code>
+$ trust &lt;PHONE_ADDRESS&gt;
+$ pair  &lt;PHONE_ADDRESS&gt;
+
+</code></pre>
+<p>要退出Bluetooth ctl，请输入quit命令：</p>
+<p>如果发现可以使用Raspbian的UI轻松设置蓝牙，则也可以跳过上述设置。通过</p>
+<h2 id="6-蓝牙配对后通过键入nano命令并复制粘贴源代码将python脚本直接添加到raspbian中并执行">6 蓝牙配对后，通过键入nano命令并复制/粘贴源代码将Python脚本直接添加到Raspbian中并执行：</h2>
+<pre><code>#!/usr/bin/env python
+import os
+from bluetooth import *
+from wifi import Cell, Scheme
+import subprocess
+import time
+wpa_supplicant_conf = &quot;/etc/wpa_supplicant/wpa_supplicant.conf&quot;
+sudo_mode = &quot;sudo &quot;
+def wifi_connect(ssid, psk):
+   # write wifi config to file
+   cmd = 'wpa_passphrase {ssid} {psk} | sudo tee -a {conf} &gt; /dev/null'.format(
+           ssid=str(ssid).replace('!', '\!'),
+           psk=str(psk).replace('!', '\!'),
+           conf=wpa_supplicant_conf
+       )
+   cmd_result = &quot;&quot;
+   cmd_result = os.system(cmd)
+   print cmd + &quot; - &quot; + str(cmd_result)
+
+   # reconfigure wifi
+   cmd = sudo_mode + 'wpa_cli -i wlan0 reconfigure'
+   cmd_result = os.system(cmd)
+   print cmd + &quot; - &quot; + str(cmd_result)
+
+   time.sleep(10)
+
+   cmd = 'iwconfig wlan0'
+   cmd_result = os.system(cmd)
+   print cmd + &quot; - &quot; + str(cmd_result)
+
+   cmd = 'ifconfig wlan0'
+   cmd_result = os.system(cmd)
+   print cmd + &quot; - &quot; + str(cmd_result)
+
+   p = subprocess.Popen(['hostname', '-I'], stdout=subprocess.PIPE,
+                           stderr=subprocess.PIPE)
+
+   out, err = p.communicate()
+
+   if out:
+       ip_address = out
+   else:
+       ip_address = &quot;&lt;Not Set&gt;&quot;
+   return ip_address
+
+def ssid_discovered():
+   Cells = Cell.all('wlan0')
+   wifi_info = 'Found ssid : \n'
+   for current in range(len(Cells)):
+       wifi_info +=  Cells[current].ssid + &quot;\n&quot;
+   wifi_info+=&quot;!&quot;
+   print wifi_info
+   return wifi_info
+def handle_client(client_sock) :
+   # get ssid
+   client_sock.send(ssid_discovered())
+   print &quot;Waiting for SSID...&quot;
+   ssid = client_sock.recv(1024)
+   if ssid == '' :
+       return
+
+   print &quot;ssid received&quot;
+   print ssid
+
+   # get psk
+   client_sock.send(&quot;waiting-psk!&quot;)
+   print &quot;Waiting for PSK...&quot;
+   psk = client_sock.recv(1024)
+   if psk == '' :
+       return
+
+   print &quot;psk received&quot;
+   print psk
+
+   ip_address = wifi_connect(ssid, psk)
+   print &quot;ip address: &quot; + ip_address
+   client_sock.send(&quot;ip-address:&quot; + ip_address + &quot;!&quot;)
+   return
+try:
+   while True:
+       server_sock=BluetoothSocket( RFCOMM )
+       server_sock.bind((&quot;&quot;,PORT_ANY))
+       server_sock.listen(1)
+
+       port = server_sock.getsockname()[1]
+
+       uuid = &quot;815425a5-bfac-47bf-9321-c5ff980b5e11&quot;
+       advertise_service( server_sock, &quot;RPi Wifi config&quot;,
+                          service_id = uuid,
+                          service_classes = [ uuid, SERIAL_PORT_CLASS ],
+                          profiles = [ SERIAL_PORT_PROFILE ])
+
+
+       print &quot;Waiting for connection on RFCOMM channel %d&quot; % port
+
+       client_sock, client_info = server_sock.accept()
+       print &quot;Accepted connection from &quot;, client_info
+
+       handle_client(client_sock)
+
+       client_sock.close()
+       server_sock.close()
+
+       # finished config
+       print 'Finished configuration\n'
+except (KeyboardInterrupt, SystemExit):
+   print '\nExiting\n'
+
+</code></pre>
+<p>接下来，您可以运行脚本</p>
+<pre><code>$ chmod +x run.py
+$ sudo python run.py
+
+</code></pre>
+<h2 id="7-现在您需要打开android-串口调试工具bluetoothserial设置wifi">7 现在您需要打开android 串口调试工具（BluetoothSerial）设置WIFI。</h2>
+<p>在蓝牙配对设备中选择Raspberry Pi。输入SSID，PSK，然后点击开始配置按钮。在几秒钟内，您的Raspberry Pi的Wi-Fi应该会连接。</p>
+<p>现在你可以通过蓝牙设置你的树莓派网络了，你也可以把脚本加到启动项，这样保证每次开机自动启动设置WIFI网络的 蓝牙服务</p>
+<h2 id="8-编辑etcrclocal-添加启动时运行此脚本">8 编辑/etc/rc.local 添加启动时运行此脚本</h2>
+<pre><code>(sleep 10;/path/to/script/./run.py)&amp;
+
+</code></pre>
+<p>😊done ...</p>
+<p></p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E6%89%80%E9%9C%80%E6%9D%90%E6%96%99">所需材料</a></li>
+<li><a href="#1-%E5%9C%A8raspbian%E4%B8%8A%E5%AE%89%E8%A3%85bluez">1 在Raspbian上安装Bluez</a></li>
+<li><a href="#2-%E5%90%AF%E5%8A%A8bluetooh-%E5%AE%88%E6%8A%A4%E7%A8%8B%E5%BA%8F">2 启动Bluetooh 守护程序</a></li>
+<li><a href="#3-%E5%8A%A0%E8%BD%BD%E4%B8%B2%E5%8F%A3%E9%85%8D%E7%BD%AE">3 加载串口配置</a></li>
+<li><a href="#4-%E9%87%8D%E5%90%AF%E6%A0%91%E8%8E%93%E6%B4%BE">4 重启树莓派</a></li>
+<li><a href="#5-%E5%B0%86pi%E7%9A%84%E8%93%9D%E7%89%99%E4%B8%8Eandroid%E9%85%8D%E5%AF%B9">5 将Pi的蓝牙与Android配对</a></li>
+<li><a href="#6-%E8%93%9D%E7%89%99%E9%85%8D%E5%AF%B9%E5%90%8E%E9%80%9A%E8%BF%87%E9%94%AE%E5%85%A5nano%E5%91%BD%E4%BB%A4%E5%B9%B6%E5%A4%8D%E5%88%B6%E7%B2%98%E8%B4%B4%E6%BA%90%E4%BB%A3%E7%A0%81%E5%B0%86python%E8%84%9A%E6%9C%AC%E7%9B%B4%E6%8E%A5%E6%B7%BB%E5%8A%A0%E5%88%B0raspbian%E4%B8%AD%E5%B9%B6%E6%89%A7%E8%A1%8C">6 蓝牙配对后，通过键入nano命令并复制/粘贴源代码将Python脚本直接添加到Raspbian中并执行：</a></li>
+<li><a href="#7-%E7%8E%B0%E5%9C%A8%E6%82%A8%E9%9C%80%E8%A6%81%E6%89%93%E5%BC%80android-%E4%B8%B2%E5%8F%A3%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7bluetoothserial%E8%AE%BE%E7%BD%AEwifi">7 现在您需要打开android 串口调试工具（BluetoothSerial）设置WIFI。</a></li>
+<li><a href="#8-%E7%BC%96%E8%BE%91etcrclocal-%E6%B7%BB%E5%8A%A0%E5%90%AF%E5%8A%A8%E6%97%B6%E8%BF%90%E8%A1%8C%E6%AD%A4%E8%84%9A%E6%9C%AC">8 编辑/etc/rc.local 添加启动时运行此脚本</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://darren.host/post/hello-world/">
+              <h3 class="post-title">
+                Hello World
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '02a90be425c0cba89a2c',
+    clientSecret: '21c90fe081cb083dc627e8b1c33df434e86cbbac',
+    repo: 'gitalk',
+    owner: 'DarrenVip',
+    admin: ['DarrenVip'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank"> &nbsp;Gridea </a>
+  <a class="rss" href="https://darren.host/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

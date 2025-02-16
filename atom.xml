@@ -1,45 +1,236 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://www.darren.host</id>
-    <title>Gridea</title>
-    <updated>2025-02-16T08:07:11.086Z</updated>
+    <id>https://darren.host</id>
+    <title>Darren.X</title>
+    <updated>2021-07-25T02:10:17.015Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://www.darren.host"/>
-    <link rel="self" href="https://www.darren.host/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
-    <logo>https://www.darren.host/images/avatar.png</logo>
-    <icon>https://www.darren.host/favicon.ico</icon>
-    <rights>All rights reserved 2025, Gridea</rights>
+    <link rel="alternate" href="https://darren.host"/>
+    <link rel="self" href="https://darren.host/atom.xml"/>
+    <subtitle>给岁月以文明，而不是给文明以岁月 - 刘慈欣</subtitle>
+    <logo>https://darren.host/images/avatar.png</logo>
+    <icon>https://darren.host/favicon.ico</icon>
+    <rights>All rights reserved 2021, Darren.X</rights>
     <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://www.darren.host/post/hello-gridea/</id>
-        <link href="https://www.darren.host/post/hello-gridea/">
+        <title type="html"><![CDATA[甲虫级（1.36kg）格斗机器人制作]]></title>
+        <id>https://darren.host/post/jia-chong-ji-136kgge-dou-ji-qi-ren-zhi-zuo/</id>
+        <link href="https://darren.host/post/jia-chong-ji-136kgge-dou-ji-qi-ren-zhi-zuo/">
+        </link>
+        <updated>2020-09-08T04:46:54.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="设计稿">设计稿</h2>
+<figure data-type="image" tabindex="1"><img src="https://darren.host/post-images/1599541623157.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://darren.host/post-images/1599541634487.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://darren.host/post-images/1599542085763.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://darren.host/post-images/1599542249018.png" alt="" loading="lazy"></figure>
+<h2 id="各个部件">各个部件</h2>
+<h3 id="一体cnc-航空铝合金机身">一体CNC 航空铝合金机身</h3>
+<figure data-type="image" tabindex="5"><img src="https://darren.host/post-images/1599540637877.jpg" alt="" loading="lazy"></figure>
+<p>做了两版本，第一版超重了 😱</p>
+<h3 id="线切割钛合金前铲牙">线切割钛合金前铲牙</h3>
+<figure data-type="image" tabindex="6"><img src="https://darren.host/post-images/1599540719825.jpg" alt="" loading="lazy"></figure>
+<p>这一对小小的钛合金牙真是肉疼了，1000 人民币一副 😛</p>
+<h3 id="3d打印的tpu前侧挡板">3D打印的TPU前侧挡板</h3>
+<figure data-type="image" tabindex="7"><img src="https://darren.host/post-images/1599540798399.jpg" alt="" loading="lazy"></figure>
+<p>这个也是打印的几版，我的3D打印机加热玻璃板只支持PLA，另外一块玻璃板已经很久没找到了。。。</p>
+<h3 id="cnc-两侧护板">CNC 两侧护板</h3>
+<figure data-type="image" tabindex="8"><img src="https://darren.host/post-images/1599540985512.jpg" alt="" loading="lazy"></figure>
+<h3 id="自己设计的减速箱">自己设计的减速箱</h3>
+<figure data-type="image" tabindex="9"><img src="https://darren.host/post-images/1599541659233.jpg" alt="" loading="lazy"></figure>
+<h3 id="武器支架">武器支架</h3>
+<figure data-type="image" tabindex="10"><img src="https://darren.host/post-images/1599542236839.jpg" alt="" loading="lazy"></figure>
+<h2 id="最后成品">最后成品</h2>
+<figure data-type="image" tabindex="11"><img src="https://darren.host/post-images/1599540544678.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="12"><img src="https://darren.host/post-images/1599540577202.jpg" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[树莓派使用蓝牙设置wifi网络]]></title>
+        <id>https://darren.host/post/shu-mei-pai-shi-yong-lan-ya-she-zhi-wifi-wang-luo/</id>
+        <link href="https://darren.host/post/shu-mei-pai-shi-yong-lan-ya-she-zhi-wifi-wang-luo/">
+        </link>
+        <updated>2020-09-07T01:44:18.000Z</updated>
+        <content type="html"><![CDATA[<p>在树莓派使用过程中，很多人都有遇到过这样的问题，经常由于工作场所变化，在无显示器和鼠标的情况下无法方便快捷对树莓派设置wifi网络。</p>
+<p>在物联网场景下，成熟的方案是使用蓝牙为设备设置网络，在本教程中，我想向您展示一种简单的方法，可以通过蓝牙仅使用Android手机为Raspberry Pi配置Wi-Fi网络。</p>
+<h2 id="所需材料">所需材料</h2>
+<p>首先，您需要：</p>
+<ul>
+<li>树莓派3</li>
+<li>Android手机</li>
+<li>Python脚本</li>
+</ul>
+<h2 id="1-在raspbian上安装bluez">1 在Raspbian上安装Bluez</h2>
+<p>首先从Raspbian终端输入以下命令，安装Python蓝牙库Bluez：</p>
+<pre><code>
+$ sudo apt-get install python-bluez
+
+</code></pre>
+<h2 id="2-启动bluetooh-守护程序">2 启动Bluetooh 守护程序</h2>
+<p>通过输入以下命令来编辑 /etc/systemd/system/dbus-org.bluez.service</p>
+<pre><code class="language-![](https://darren.host/post-images/1599462180234.png)">
+$ sudo nano /etc/systemd/system/dbus-org.bluez.service
+
+</code></pre>
+<p>并修改 ExecStart 参数<br>
+ExecStart = / usr / lib / bluetooth / bluetoothd –C</p>
+<h2 id="3-加载串口配置">3 加载串口配置</h2>
+<pre><code>
+$ sudo sdptool add SP
+
+</code></pre>
+<h2 id="4-重启树莓派">4 重启树莓派</h2>
+<pre><code>
+$ sudo reboot
+
+</code></pre>
+<h2 id="5-将pi的蓝牙与android配对">5 将Pi的蓝牙与Android配对</h2>
+<p>打开手机的蓝牙，然后将手机与Raspberry Pi配对。接下来，在您的Pi上输入：</p>
+<pre><code>
+$ bluetoothctl
+power on
+discoverable on
+scan on
+
+</code></pre>
+<p>您的手机将出现在可用设备列表中。信任并配对。</p>
+<pre><code>
+$ trust &lt;PHONE_ADDRESS&gt;
+$ pair  &lt;PHONE_ADDRESS&gt;
+
+</code></pre>
+<p>要退出Bluetooth ctl，请输入quit命令：</p>
+<p>如果发现可以使用Raspbian的UI轻松设置蓝牙，则也可以跳过上述设置。通过</p>
+<h2 id="6-蓝牙配对后通过键入nano命令并复制粘贴源代码将python脚本直接添加到raspbian中并执行">6 蓝牙配对后，通过键入nano命令并复制/粘贴源代码将Python脚本直接添加到Raspbian中并执行：</h2>
+<pre><code>#!/usr/bin/env python
+import os
+from bluetooth import *
+from wifi import Cell, Scheme
+import subprocess
+import time
+wpa_supplicant_conf = &quot;/etc/wpa_supplicant/wpa_supplicant.conf&quot;
+sudo_mode = &quot;sudo &quot;
+def wifi_connect(ssid, psk):
+   # write wifi config to file
+   cmd = 'wpa_passphrase {ssid} {psk} | sudo tee -a {conf} &gt; /dev/null'.format(
+           ssid=str(ssid).replace('!', '\!'),
+           psk=str(psk).replace('!', '\!'),
+           conf=wpa_supplicant_conf
+       )
+   cmd_result = &quot;&quot;
+   cmd_result = os.system(cmd)
+   print cmd + &quot; - &quot; + str(cmd_result)
+
+   # reconfigure wifi
+   cmd = sudo_mode + 'wpa_cli -i wlan0 reconfigure'
+   cmd_result = os.system(cmd)
+   print cmd + &quot; - &quot; + str(cmd_result)
+
+   time.sleep(10)
+
+   cmd = 'iwconfig wlan0'
+   cmd_result = os.system(cmd)
+   print cmd + &quot; - &quot; + str(cmd_result)
+
+   cmd = 'ifconfig wlan0'
+   cmd_result = os.system(cmd)
+   print cmd + &quot; - &quot; + str(cmd_result)
+
+   p = subprocess.Popen(['hostname', '-I'], stdout=subprocess.PIPE,
+                           stderr=subprocess.PIPE)
+
+   out, err = p.communicate()
+
+   if out:
+       ip_address = out
+   else:
+       ip_address = &quot;&lt;Not Set&gt;&quot;
+   return ip_address
+
+def ssid_discovered():
+   Cells = Cell.all('wlan0')
+   wifi_info = 'Found ssid : \n'
+   for current in range(len(Cells)):
+       wifi_info +=  Cells[current].ssid + &quot;\n&quot;
+   wifi_info+=&quot;!&quot;
+   print wifi_info
+   return wifi_info
+def handle_client(client_sock) :
+   # get ssid
+   client_sock.send(ssid_discovered())
+   print &quot;Waiting for SSID...&quot;
+   ssid = client_sock.recv(1024)
+   if ssid == '' :
+       return
+
+   print &quot;ssid received&quot;
+   print ssid
+
+   # get psk
+   client_sock.send(&quot;waiting-psk!&quot;)
+   print &quot;Waiting for PSK...&quot;
+   psk = client_sock.recv(1024)
+   if psk == '' :
+       return
+
+   print &quot;psk received&quot;
+   print psk
+
+   ip_address = wifi_connect(ssid, psk)
+   print &quot;ip address: &quot; + ip_address
+   client_sock.send(&quot;ip-address:&quot; + ip_address + &quot;!&quot;)
+   return
+try:
+   while True:
+       server_sock=BluetoothSocket( RFCOMM )
+       server_sock.bind((&quot;&quot;,PORT_ANY))
+       server_sock.listen(1)
+
+       port = server_sock.getsockname()[1]
+
+       uuid = &quot;815425a5-bfac-47bf-9321-c5ff980b5e11&quot;
+       advertise_service( server_sock, &quot;RPi Wifi config&quot;,
+                          service_id = uuid,
+                          service_classes = [ uuid, SERIAL_PORT_CLASS ],
+                          profiles = [ SERIAL_PORT_PROFILE ])
+
+
+       print &quot;Waiting for connection on RFCOMM channel %d&quot; % port
+
+       client_sock, client_info = server_sock.accept()
+       print &quot;Accepted connection from &quot;, client_info
+
+       handle_client(client_sock)
+
+       client_sock.close()
+       server_sock.close()
+
+       # finished config
+       print 'Finished configuration\n'
+except (KeyboardInterrupt, SystemExit):
+   print '\nExiting\n'
+
+</code></pre>
+<p>接下来，您可以运行脚本</p>
+<pre><code>$ chmod +x run.py
+$ sudo python run.py
+
+</code></pre>
+<h2 id="7-现在您需要打开android-串口调试工具bluetoothserial设置wifi">7 现在您需要打开android 串口调试工具（BluetoothSerial）设置WIFI。</h2>
+<p>在蓝牙配对设备中选择Raspberry Pi。输入SSID，PSK，然后点击开始配置按钮。在几秒钟内，您的Raspberry Pi的Wi-Fi应该会连接。</p>
+<p>现在你可以通过蓝牙设置你的树莓派网络了，你也可以把脚本加到启动项，这样保证每次开机自动启动设置WIFI网络的 蓝牙服务</p>
+<h2 id="8-编辑etcrclocal-添加启动时运行此脚本">8 编辑/etc/rc.local 添加启动时运行此脚本</h2>
+<pre><code>(sleep 10;/path/to/script/./run.py)&amp;
+
+</code></pre>
+<p>😊done ...</p>
+<p></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Hello World]]></title>
+        <id>https://darren.host/post/hello-world/</id>
+        <link href="https://darren.host/post/hello-world/">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="https://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+        <content type="html"><![CDATA[<p>😘 Enjoy~</p>
 ]]></content>
     </entry>
 </feed>
