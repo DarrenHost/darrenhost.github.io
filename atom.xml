@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://darrenhost.github.io</id>
     <title>Darren.X</title>
-    <updated>2021-07-25T02:10:17.015Z</updated>
+    <updated>2026-05-04T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://darrenhost.github.io"/>
     <link rel="self" href="https://darrenhost.github.io/atom.xml"/>
@@ -231,6 +231,91 @@ $ sudo python run.py
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <content type="html"><![CDATA[<p>😘 Enjoy~</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Xubuntu 系统安装 Hermes Agent 快速指南]]></title>
+        <id>https://darrenhost.github.io/post/xubuntu-hermes-agent-install/</id>
+        <link href="https://darrenhost.github.io/post/xubuntu-hermes-agent-install/">
+        </link>
+        <updated>2026-05-04T00:00:00.000Z</updated>
+        <content type="html"><![CDATA[<p>本指南将帮助你在 Xubuntu 系统上快速安装和配置 Hermes Agent。</p>
+<h2 id="1-系统要求">1. 系统要求</h2>
+<ul>
+<li>操作系统：Xubuntu 20.04 LTS 或更高版本</li>
+<li>Python 版本：3.8 或更高</li>
+<li>内存：至少 4GB RAM</li>
+<li>磁盘空间：至少 2GB 可用空间</li>
+</ul>
+<h2 id="2-安装依赖">2. 安装依赖</h2>
+<p>首先更新系统包并安装必要的依赖：</p>
+<pre><code class="language-bash">sudo apt update
+sudo apt upgrade -y
+sudo apt install -y python3 python3-pip python3-venv git curl
+</code></pre>
+<h2 id="3-安装-nodejs">3. 安装 Node.js</h2>
+<p>Hermes Agent 需要 Node.js 环境：</p>
+<pre><code class="language-bash"># 使用 NodeSource 仓库安装 Node.js 20
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt install -y nodejs
+
+# 验证安装
+node --version
+npm --version
+</code></pre>
+<h2 id="4-克隆-hermes-仓库">4. 克隆 Hermes 仓库</h2>
+<pre><code class="language-bash"># 克隆仓库
+git clone https://github.com/anthropics/hermes.git
+cd hermes
+</code></pre>
+<h2 id="5-创建虚拟环境">5. 创建虚拟环境</h2>
+<pre><code class="language-bash"># 创建 Python 虚拟环境
+python3 -m venv venv
+
+# 激活虚拟环境
+source venv/bin/activate
+</code></pre>
+<h2 id="6-安装-python-依赖">6. 安装 Python 依赖</h2>
+<pre><code class="language-bash"># 升级 pip
+pip install --upgrade pip
+
+# 安装项目依赖
+pip install -r requirements.txt
+</code></pre>
+<h2 id="7-配置-api-密钥">7. 配置 API 密钥</h2>
+<pre><code class="language-bash"># 创建 .env 文件
+cat > .env << 'EOF'
+ANTHROPIC_API_KEY=your_api_key_here
+EOF
+
+# 或者临时设置环境变量
+export ANTHROPIC_API_KEY="your_api_key_here"
+</code></pre>
+<h2 id="8-安装-hermes-agent">8. 安装 Hermes Agent</h2>
+<pre><code class="language-bash"># 开发模式安装
+pip install -e .
+
+# 或者全局安装
+pip install .
+</code></pre>
+<h2 id="9-验证安装">9. 验证安装</h2>
+<pre><code class="language-bash"># 检查 Hermes 版本
+hermes --version
+
+# 运行测试
+hermes test
+</code></pre>
+<h2 id="10-运行-hermes">10. 运行 Hermes</h2>
+<pre><code class="language-bash"># 交互模式
+hermes chat
+
+# 执行脚本
+hermes run script.py
+
+# 后台运行
+hermes serve --port 8080
+</code></pre>
+<p><em>详细步骤请查看完整文章。</em></p>
 ]]></content>
     </entry>
 </feed>
