@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <!-- Background Gradient -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E95420"/>
+      <stop offset="100%" style="stop-color:#772953"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2D2D2D"/>
+      <stop offset="100%" style="stop-color:#1A1A1A"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  
+  <!-- Terminal Window -->
+  <rect x="150" y="180" width="900" height="380" rx="10" fill="url(#screen)" stroke="#333" stroke-width="2"/>
+  
+  <!-- Terminal Header -->
+  <rect x="150" y="180" width="900" height="40" rx="10" fill="#3D3D3D"/>
+  <circle cx="180" cy="200" r="8" fill="#E95420"/>
+  <circle cx="210" cy="200" r="8" fill="#5E5E5E"/>
+  <circle cx="240" cy="200" r="8" fill="#5E5E5E"/>
+  <text x="300" y="205" fill="#999" font-family="monospace" font-size="14">user@xubuntu:~</text>
+  
+  <!-- Terminal Content -->
+  <text x="180" y="260" fill="#4E9A06" font-family="monospace" font-size="16">
+    <tspan fill="#4E9A06">user@xubuntu:~$</tspan> <tspan fill="#FFFFFF">git clone https://github.com/anthropics/hermes.git</tspan>
+  </text>
+  <text x="180" y="300" fill="#4E9A06" font-family="monospace" font-size="16">
+    <tspan fill="#4E9A06">user@xubuntu:~/hermes$</tspan> <tspan fill="#FFFFFF">pip install -e .</tspan>
+  </text>
+  <text x="180" y="340" fill="#4E9A06" font-family="monospace" font-size="16">
+    <tspan fill="#4E9A06">user@xubuntu:~/hermes$</tspan> <tspan fill="#FFFFFF">hermes --version</tspan>
+  </text>
+  <text x="180" y="400" fill="#FFFFFF" font-family="monospace" font-size="20" filter="url(#glow)">
+    ✨ Hermes Agent v1.0.0
+  </text>
+  <text x="180" y="440" fill="#888" font-family="monospace" font-size="14">AI Agent for task automation</text>
+  <text x="180" y="470" fill="#888" font-family="monospace" font-size="14">Successfully installed on Xubuntu</text>
+  
+  <!-- Ubuntu Logo Circle -->
+  <circle cx="950" cy="380" r="60" fill="none" stroke="#E95420" stroke-width="3" opacity="0.6"/>
+  <circle cx="950" cy="380" r="40" fill="none" stroke="#E95420" stroke-width="3" opacity="0.4"/>
+  <circle cx="950" cy="380" r="15" fill="#E95420" opacity="0.8"/>
+  
+  <!-- Title Text -->
+  <text x="600" y="100" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="32" font-weight="bold">Xubuntu 系统安装</text>
+  <text x="600" y="145" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="32" font-weight="bold">Hermes Agent 快速指南</text>
+  
+  <!-- Ubuntu Logo Elements -->
+  <circle cx="100" cy="600" r="30" fill="#E95420" opacity="0.5"/>
+  <circle cx="1100" cy="75" r="25" fill="#E95420" opacity="0.5"/>
+  
+  <!-- Code decoration -->
+  <text x="1000" y="580" fill="#FFFFFF" font-family="monospace" font-size="11" opacity="0.3">
+    <tspan x="1000" dy="0">#!/bin/bash</tspan>
+    <tspan x="1000" dy="18">sudo apt update &amp;&amp; sudo apt upgrade</tspan>
+    <tspan x="1000" dy="18">sudo apt install python3-pip python3-venv</tspan>
+    <tspan x="1000" dy="18">pip install hermes-agent</tspan>
+    <tspan x="1000" dy="18">hermes chat</tspan>
+  </text>
+  
+  <!-- Decorative lines -->
+  <line x1="150" y1="650" x2="1050" y2="650" stroke="#E95420" stroke-width="2" opacity="0.3"/>
+  <line x1="150" y1="660" x2="1050" y2="660" stroke="#FFFFFF" stroke-width="1" opacity="0.2"/>
+</svg>
