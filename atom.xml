@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://darrenhost.github.io</id>
     <title>Darren.X</title>
-    <updated>2026-05-04T00:00:00.000Z</updated>
+    <updated>2026-05-05T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://darrenhost.github.io"/>
     <link rel="self" href="https://darrenhost.github.io/atom.xml"/>
@@ -10,6 +10,25 @@
     <logo>https://darrenhost.github.io/images/avatar.png</logo>
     <icon>https://darrenhost.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Darren.X</rights>
+    <entry>
+        <title type="html"><![CDATA[Hermes Agent + Open Design 安装使用说明]]></title>
+        <id>https://darrenhost.github.io/post/hermes-agent-open-design-install/</id>
+        <link href="https://darrenhost.github.io/post/hermes-agent-open-design-install/">
+        </link>
+        <updated>2026-05-05T00:00:00.000Z</updated>
+        <content type="html"><![CDATA[<p>本文详细介绍如何在本地环境中安装和配置 Hermes Agent 与 Open Design，实现 AI 驱动的设计自动化工作流。</p>
+<h2 id="概述">概述</h2>
+<p><strong>Hermes Agent</strong> 是一个强大的 AI 代理框架，能够执行复杂的自动化任务。<strong>Open Design</strong> 是开源的设计系统，提供设计稿生成、原型制作等功能。两者结合可以实现：</p>
+<ul>
+<li>AI 驱动的设计稿自动生成</li>
+<li>智能设计系统管理</li>
+<li>自动化设计评审和优化</li>
+<li>设计到代码的自动转换</li>
+</ul>
+<h2 id="安装步骤">安装步骤</h2>
+<p>详细安装指南请访问：<a href="https://darrenhost.github.io/post/hermes-agent-open-design-install/">完整文章</a></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[甲虫级（1.36kg）格斗机器人制作]]></title>
         <id>https://darrenhost.github.io/post/jia-chong-ji-136kgge-dou-ji-qi-ren-zhi-zuo/</id>

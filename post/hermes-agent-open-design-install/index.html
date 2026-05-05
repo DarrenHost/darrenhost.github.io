@@ -1,0 +1,483 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hermes Agent + Open Design 安装使用说明 | Darren.X</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1627178711416">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Hermes Agent + Open Design 安装使用说明 | Darren.X - Atom Feed" href="/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="Hermes Agent 与 Open Design 集成安装与使用完整指南" />
+    <meta name="keywords" content="代码，Hermes，AI Agent，Open Design，自动化" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="">
+  <img class="avatar" src="/images/avatar.png?v=1627178711416" alt="">
+  </a>
+  <h1 class="site-title">
+    Darren.X
+  </h1>
+  <p class="site-description">
+    给岁月以文明，而不是给文明以岁月 - 刘慈欣
+  </p>
+  <div class="menu-container">
+    
+      
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+    
+      
+        <a href="/tag/maker" class="menu">
+          玩物
+        </a>
+      
+    
+      
+    
+      
+        <a href="/tag/coding" class="menu">
+          代码
+        </a>
+      
+    
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/DarrenHost" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-content-container">
+          
+<article class="post">
+  <div class="post-header">
+    <h1 class="post-title">Hermes Agent + Open Design 安装使用说明</h1>
+  </div>
+  <div class="post-info">
+    <span>
+      2026-05-05
+    </span>
+    <span>
+      8 min read
+    </span>
+    
+      <a href="/tag/coding/" class="post-tag">
+        # 代码
+      </a>
+    
+      <a href="/tag/hermes/" class="post-tag">
+        # Hermes
+      </a>
+    
+      <a href="/tag/ai-agent/" class="post-tag">
+        # AI Agent
+      </a>
+    
+      <a href="/tag/open-design/" class="post-tag">
+        # Open Design
+      </a>
+    
+  </div>
+      <div class="post-content">
+    <figure data-type="image" tabindex="1"><img src="/post-images/hermes-agent-open-design-install.svg" alt="" loading="lazy"></figure>
+    <p>本文详细介绍如何在本地环境中安装和配置 Hermes Agent 与 Open Design，实现 AI 驱动的设计自动化工作流。</p>
+<h2 id="概述">概述</h2>
+<p><strong>Hermes Agent</strong> 是一个强大的 AI 代理框架，能够执行复杂的自动化任务。<strong>Open Design</strong> 是开源的设计系统，提供设计稿生成、原型制作等功能。两者结合可以实现：</p>
+<ul>
+<li>AI 驱动的设计稿自动生成</li>
+<li>智能设计系统管理</li>
+<li>自动化设计评审和优化</li>
+<li>设计到代码的自动转换</li>
+</ul>
+<h2 id="1-系统要求">1. 系统要求</h2>
+<ul>
+<li>操作系统：Linux / macOS / Windows (WSL2 推荐)</li>
+<li>Python 版本：3.10 或更高</li>
+<li>Node.js 版本：18.x 或更高 (推荐 20.x)</li>
+<li>内存：至少 8GB RAM (推荐 16GB)</li>
+<li>磁盘空间：至少 5GB 可用空间</li>
+<li>Git：2.30 或更高</li>
+</ul>
+<h2 id="2-安装-hermes-agent">2. 安装 Hermes Agent</h2>
+<h3 id="21-克隆仓库">2.1 克隆仓库</h3>
+<pre><code class="language-bash"># 克隆 Hermes Agent 仓库
+git clone https://github.com/anthropics/hermes.git
+cd hermes
+</code></pre>
+<h3 id="22-创建虚拟环境">2.2 创建虚拟环境</h3>
+<pre><code class="language-bash"># 创建 Python 虚拟环境
+python3 -m venv venv
+
+# 激活虚拟环境
+# Linux/macOS
+source venv/bin/activate
+# Windows
+venv\Scripts\activate
+</code></pre>
+<h3 id="23-安装依赖">2.3 安装依赖</h3>
+<pre><code class="language-bash"># 升级 pip
+pip install --upgrade pip
+
+# 安装项目依赖
+pip install -r requirements.txt
+
+# 开发模式安装
+pip install -e .
+</code></pre>
+<h3 id="24-配置-api-密钥">2.4 配置 API 密钥</h3>
+<pre><code class="language-bash"># 创建 .env 文件
+cat &gt; .env &lt;&lt; 'EOF'
+# Anthropic API 配置
+ANTHROPIC_API_KEY=your_api_key_here
+
+# 可选：其他提供商
+# OPENAI_API_KEY=your_openai_key
+# GEMINI_API_KEY=your_gemini_key
+EOF
+
+# 或者临时设置环境变量
+export ANTHROPIC_API_KEY="your_api_key_here"
+</code></pre>
+<h3 id="25-验证安装">2.5 验证安装</h3>
+<pre><code class="language-bash"># 检查 Hermes 版本
+hermes --version
+
+# 运行测试
+hermes test
+
+# 查看帮助
+hermes --help
+</code></pre>
+<h2 id="3-安装-open-design">3. 安装 Open Design</h2>
+<h3 id="31-克隆仓库">3.1 克隆仓库</h3>
+<pre><code class="language-bash"># 克隆 Open Design 仓库
+git clone https://github.com/nexu-io/open-design.git
+cd open-design
+</code></pre>
+<h3 id="32-安装-nodejs-依赖">3.2 安装 Node.js 依赖</h3>
+<pre><code class="language-bash"># 安装 pnpm (推荐)
+npm install -g pnpm
+
+# 安装项目依赖
+pnpm install
+</code></pre>
+<h3 id="33-启动开发服务器">3.3 启动开发服务器</h3>
+<pre><code class="language-bash"># 启动 Open Design 开发服务器
+pnpm tools-dev run web --daemon-port 17456 --web-port 17573
+</code></pre>
+<p>启动成功后，访问：</p>
+<ul>
+<li>Web 界面：http://127.0.0.1:17573</li>
+<li>Daemon API：http://127.0.0.1:17456</li>
+</ul>
+<h2 id="4-配置集成">4. 配置集成</h2>
+<h3 id="41-创建-hermes-skill">4.1 创建 Hermes Skill</h3>
+<p>在 Hermes 中创建 Open Design 集成 skill：</p>
+<pre><code class="language-bash">mkdir -p ~/.hermes/skills/open-design-integration
+</code></pre>
+<p>创建 <code>SKILL.md</code> 文件：</p>
+<pre><code class="language-markdown">---
+name: open-design-integration
+description: Open Design 集成技能 - 自动化设计稿生成和管理
+version: 1.0.0
+---
+
+# Open Design 集成
+
+## 触发条件
+- 用户请求创建设计稿
+- 需要生成原型或幻灯片
+- 设计系统管理任务
+
+## 操作步骤
+
+### 1. 启动 Open Design 服务
+```bash
+cd ~/open-design
+pnpm tools-dev run web --daemon-port 17456 --web-port 17573
+```
+
+### 2. 创建新项目
+使用浏览器自动化工具访问 http://127.0.0.1:17573 并创建项目。
+
+### 3. 导出设计稿
+从 Open Design 导出 SVG/PNG 格式设计稿。
+
+## 注意事项
+- 确保 Node.js 版本符合要求 (~24)
+- 开发服务器需要保持运行
+- 设计稿保存到指定目录
+</code></pre>
+<h3 id="42-配置-hermes-工具">4.2 配置 Hermes 工具</h3>
+<p>在 Hermes 配置中添加 Open Design 工具：</p>
+<pre><code class="language-python"># ~/.hermes/config.py
+TOOLS = {
+    &quot;open_design&quot;: {
+        &quot;enabled&quot;: True,
+        &quot;web_url&quot;: &quot;http://127.0.0.1:17573&quot;,
+        &quot;daemon_url&quot;: &quot;http://127.0.0.1:17456&quot;,
+        &quot;export_dir&quot;: &quot;~/designs/exports&quot;
+    }
+}
+</code></pre>
+<h2 id="5-使用示例">5. 使用示例</h2>
+<h3 id="51-创建设计原型">5.1 创建设计原型</h3>
+<pre><code class="language-bash"># 通过 Hermes 创建新设计项目
+hermes run create_design.py --name &quot;My Project&quot; --type &quot;prototype&quot;
+</code></pre>
+<h3 id="52-生成设计稿">5.2 生成设计稿</h3>
+<pre><code class="language-bash"># 使用 AI 生成设计稿
+hermes chat &quot;为我的新项目创建一个高保真设计稿，包含首页和关于页面&quot;
+</code></pre>
+<h3 id="53-导出设计">5.3 导出设计</h3>
+<pre><code class="language-bash"># 导出设计稿为 SVG 格式
+hermes run export_design.py --format svg --output ~/blog/post-images/
+</code></pre>
+<h2 id="6-常见问题">6. 常见问题</h2>
+<h3 id="问题-1-端口冲突">问题 1: 端口冲突</h3>
+<p>如果端口 17456 或 17573 被占用：</p>
+<pre><code class="language-bash"># 查找占用端口的进程
+lsof -i :17456
+lsof -i :17573
+
+# 终止进程
+kill -9 &lt;PID&gt;
+
+# 或使用不同端口启动
+pnpm tools-dev run web --daemon-port 17457 --web-port 17574
+</code></pre>
+<h3 id="问题-2-nodejs-版本不匹配">问题 2: Node.js 版本不匹配</h3>
+<p>Open Design 需要 Node.js ~24：</p>
+<pre><code class="language-bash"># 使用 nvm 安装正确版本
+nvm install 24
+nvm use 24
+
+# 或使用 n
+npm install -g n
+n 24
+</code></pre>
+<h3 id="问题-3-依赖安装失败">问题 3: 依赖安装失败</h3>
+<pre><code class="language-bash"># 清除缓存
+pnpm store prune
+npm cache clean --force
+
+# 使用国内镜像
+export PNPM_REGISTRY_MIRROR=https://registry.npmmirror.com
+pnpm install
+</code></pre>
+<h3 id="问题-4-hermes-无法连接-open-design">问题 4: Hermes 无法连接 Open Design</h3>
+<pre><code class="language-bash"># 检查服务状态
+curl http://127.0.0.1:17573
+
+# 查看日志
+pnpm tools-dev logs
+
+# 重启服务
+pnpm tools-dev stop
+pnpm tools-dev run web
+</code></pre>
+<h2 id="7-高级配置">7. 高级配置</h2>
+<h3 id="71-配置-systemd-服务">7.1 配置 Systemd 服务</h3>
+<p>创建 Open Design 系统服务：</p>
+<pre><code class="language-bash">sudo cat &gt; /etc/systemd/system/open-design.service &lt;&lt; 'EOF'
+[Unit]
+Description=Open Design Service
+After=network.target
+
+[Service]
+Type=simple
+User=$USER
+WorkingDirectory=/home/$USER/open-design
+ExecStart=/usr/bin/pnpm tools-dev run web --daemon-port 17456 --web-port 17573
+Restart=always
+Environment=&quot;PATH=/usr/bin:/bin:/usr/local/bin&quot;
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# 启用并启动服务
+sudo systemctl daemon-reload
+sudo systemctl enable open-design
+sudo systemctl start open-design
+</code></pre>
+<h3 id="72-配置-nginx-反向代理">7.2 配置 Nginx 反向代理</h3>
+<pre><code class="language-nginx"># /etc/nginx/sites-available/open-design
+server {
+    listen 80;
+    server_name design.yourdomain.com;
+
+    location / {
+        proxy_pass http://127.0.0.1:17573;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+</code></pre>
+<h2 id="8-最佳实践">8. 最佳实践</h2>
+<ul>
+<li><strong>版本管理</strong>：使用 nvm 管理 Node.js 版本，使用 pyenv 管理 Python 版本</li>
+<li><strong>项目隔离</strong>：每个项目使用独立的虚拟环境和 node_modules</li>
+<li><strong>定期备份</strong>：备份设计稿和配置文件到云存储</li>
+<li><strong>性能优化</strong>：使用 SSD 存储，确保足够内存</li>
+<li><strong>安全配置</strong>：不要将 API 密钥提交到版本控制</li>
+</ul>
+<h2 id="参考资源">参考资源</h2>
+<ul>
+<li><a href="https://github.com/anthropics/hermes">Hermes Agent GitHub</a></li>
+<li><a href="https://github.com/nexu-io/open-design">Open Design GitHub</a></li>
+<li><a href="https://hermes-agent.readthedocs.io/">Hermes 官方文档</a></li>
+<li><a href="https://open-design.dev/">Open Design 文档</a></li>
+</ul>
+<hr>
+<p><em>最后更新：2026-05-05</em></p>
+
+  </div>
+  
+</article>
+
+        </div>
+      </div>
+      
+        
+<div class="post-footer">
+  
+    <a href="/post/xubuntu-hermes-agent-install/" class="post-footer-item">
+      
+        <div class="next">
+          <i class="ri-arrow-left-line"></i>
+          <div class="post-info">
+            <div class="label">
+              下一篇
+            </div>
+            <div class="post-info">
+              Xubuntu 系统安装 Hermes Agent 快速指南
+            </div>
+          </div>
+        </div>
+      
+    </a>
+  
+</div>
+
+      
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_config = function () {
+          this.page.url = 'https://darrenhost.github.io/post/hermes-agent-open-design-install/';
+          this.page.identifier = '/post/hermes-agent-open-design-install/';
+        };
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = 'https://YOUR_SHORTNAME.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      
+    </div>
+    <div class="site-footer">
+  <div class="site-info">
+    <div class="site-name">Darren.X</div>
+    <div class="site-description">给岁月以文明，而不是给文明以岁月 - 刘慈欣</div>
+  </div>
+  <div class="site-links">
+    
+      <a href="https://github.com/DarrenHost" target="_blank" rel="noopener">
+        <i class="ri-github-line"></i>
+      </a>
+    
+      <a href="/atom.xml" target="_blank" rel="noopener">
+        <i class="ri-rss-line"></i>
+      </a>
+    
+  </div>
+  <div class="site-copyright">
+    <a href="https://github.com/getgridea/gridea" target="_blank" rel="noopener">Powered by Gridea</a> | 
+    <a href="/post/about/">关于</a>
+  </div>
+</div>
+
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+      <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/js-md4@0.3.2/build/md4.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js"></script>
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+              delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+              ],
+              throwOnError: false
+            });
+          });
+        </script>
+      
+    
+  </body>
+</html>
