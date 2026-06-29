@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI工具使用情况调研问卷</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <style>
+        .fade-in { animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .progress-bar {
+            transition: width 0.3s ease;
+        }
+        .question-card {
+            transition: all 0.3s ease;
+        }
+        .question-card:hover {
+            transform: translateX(4px);
+        }
+        input[type="radio"]:checked + label,
+        input[type="checkbox"]:checked + label {
+            background-color: #eff6ff;
+            border-color: #3b82f6;
+        }
+        .tab-active {
+            border-bottom: 3px solid #3b82f6;
+            color: #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- 导航标签 -->
+    <div class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="max-w-4xl mx-auto flex">
+            <button onclick="showTab('survey')" id="tab-survey" class="flex-1 py-4 text-center font-medium tab-active">
+                📝 填写问卷
+            </button>
+            <button onclick="showTab('analysis')" id="tab-analysis" class="flex-1 py-4 text-center font-medium text-gray-500 hover:text-gray-700">
+                📊 统计分析
+            </button>
+        </div>
+    </div>
+
+    <!-- 问卷填写页面 -->
+    <div id="page-survey" class="fade-in">
+        <div class="max-w-3xl mx-auto px-4 py-8">
+            <!-- 标题区 -->
+            <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white mb-8">
+                <h1 class="text-2xl md:text-3xl font-bold mb-2">AI工具使用情况调研</h1>
+                <p class="text-blue-100">了解全员AI使用水平，助力企业数字化升级</p>
+                <div class="mt-4 flex items-center text-sm text-blue-200">
+                    <span>⏱ 预计用时：3-5分钟</span>
+                    <span class="mx-3">|</span>
+                    <span>🔒 所有数据严格保密</span>
+                </div>
+            </div>
+
+            <!-- 进度条 -->
+            <div class="bg-white rounded-xl p-4 mb-6 shadow-sm">
+                <div class="flex justify-between text-sm text-gray-600 mb-2">
+                    <span>填写进度</span>
+                    <span id="progress-text">0%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div id="progress-bar" class="progress-bar bg-blue-500 h-2 rounded-full" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <!-- 问卷表单 -->
+            <form id="survey-form" class="space-y-6">
+                <!-- 第一部分：基本信息 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-bold mr-3">1</span>
+                        基本信息
+                    </h2>
+                    
+                    <div class="space-y-5">
+                        <div class="question-card">
+                            <p class="font-medium text-gray-700 mb-3">Q0. 您的姓名？<span class="text-red-500">*</span></p>
+                            <input type="text" name="name" placeholder="请输入您的姓名" 
+                                class="w-full p-3 border-2 border-gray-200 rounded-xl focus:border-blue-400 focus:outline-none transition"
+                                onchange="updateProgress()">
+                        </div>
+
+                        <div class="question-card">
+                            <p class="font-medium text-gray-700 mb-3">Q1. 您所在的部门？<span class="text-red-500">*</span></p>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+                                <div>
+                                    <input type="radio" name="department" value="采购部" id="dept1" class="hidden" onchange="updateProgress(); toggleOtherDept()">
+                                    <label for="dept1" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">采购部</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="department" value="财务部" id="dept2" class="hidden" onchange="updateProgress(); toggleOtherDept()">
+                                    <label for="dept2" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">财务部</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="department" value="内贸销售部" id="dept3" class="hidden" onchange="updateProgress(); toggleOtherDept()">
+                                    <label for="dept3" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">内贸销售部</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="department" value="外贸销售部" id="dept4" class="hidden" onchange="updateProgress(); toggleOtherDept()">
+                                    <label for="dept4" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">外贸销售部</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="department" value="市场运营部" id="dept5" class="hidden" onchange="updateProgress(); toggleOtherDept()">
+                                    <label for="dept5" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">市场运营部</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="department" value="技术部" id="dept6" class="hidden" onchange="updateProgress(); toggleOtherDept()">
+                                    <label for="dept6" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">技术部</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="department" value="品质部" id="dept7" class="hidden" onchange="updateProgress(); toggleOtherDept()">
+                                    <label for="dept7" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">品质部</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="department" value="生产部" id="dept8" class="hidden" onchange="updateProgress(); toggleOtherDept()">
+                                    <label for="dept8" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">生产部</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="department" value="售后部" id="dept9" class="hidden" onchange="updateProgress(); toggleOtherDept()">
+                                    <label for="dept9" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">售后部</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="department" value="行政人事部" id="dept10" class="hidden" onchange="updateProgress(); toggleOtherDept()">
+                                    <label for="dept10" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">行政人事部</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="department" value="其他" id="dept11" class="hidden" onchange="updateProgress(); toggleOtherDept()">
+                                    <label for="dept11" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">其他</label>
+                                </div>
+                            </div>
+                            <div id="other-dept-input" class="mt-3 hidden">
+                                <input type="text" name="department_other" placeholder="请填写具体部门" 
+                                    class="w-full p-2 border-2 border-gray-200 rounded-lg focus:border-blue-400 focus:outline-none transition text-sm"
+                                    onchange="updateProgress()">
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <p class="font-medium text-gray-700 mb-3">Q2. 您的岗位类型？<span class="text-red-500">*</span></p>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+                                <div>
+                                    <input type="radio" name="position" value="管理岗" id="pos1" class="hidden" onchange="updateProgress()">
+                                    <label for="pos1" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">管理岗</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="position" value="专业岗" id="pos2" class="hidden" onchange="updateProgress()">
+                                    <label for="pos2" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">专业岗</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="position" value="执行岗" id="pos3" class="hidden" onchange="updateProgress()">
+                                    <label for="pos3" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">执行岗</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第二部分：AI使用水平 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <span class="w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-bold mr-3">2</span>
+                        AI使用水平
+                    </h2>
+                    
+                    <div class="space-y-5">
+                        <div class="question-card">
+                            <p class="font-medium text-gray-700 mb-3">Q3. 您对AI工具的了解和使用程度如何？<span class="text-red-500">*</span></p>
+                            <div class="space-y-2">
+                                <div>
+                                    <input type="radio" name="ai_level" value="完全不了解" id="level1" class="hidden" onchange="updateProgress()">
+                                    <label for="level1" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-300 transition">
+                                        <span class="font-medium">完全不了解</span> — 从没听过/用过
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="ai_level" value="听说过未使用" id="level2" class="hidden" onchange="updateProgress()">
+                                    <label for="level2" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-300 transition">
+                                        <span class="font-medium">听说过</span> — 但从没实际使用过
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="ai_level" value="尝试过" id="level3" class="hidden" onchange="updateProgress()">
+                                    <label for="level3" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-300 transition">
+                                        <span class="font-medium">尝试过</span> — 一两次，不太会用
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="ai_level" value="偶尔使用" id="level4" class="hidden" onchange="updateProgress()">
+                                    <label for="level4" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-300 transition">
+                                        <span class="font-medium">偶尔使用</span> — 能完成一些简单任务
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="ai_level" value="经常使用" id="level5" class="hidden" onchange="updateProgress()">
+                                    <label for="level5" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-300 transition">
+                                        <span class="font-medium">经常使用</span> — 能熟练运用到工作中
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="ai_level" value="非常熟练" id="level6" class="hidden" onchange="updateProgress()">
+                                    <label for="level6" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-300 transition">
+                                        <span class="font-medium">非常熟练</span> — 能灵活运用解决复杂问题
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <p class="font-medium text-gray-700 mb-3">Q4. 您目前使用过哪些AI工具？（可多选）</p>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+                                <div>
+                                    <input type="checkbox" name="ai_tools" value="ChatGPT" id="tool1" class="hidden" onchange="updateProgress(); checkOtherTools()">
+                                    <label for="tool1" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-center text-sm hover:border-blue-300 transition">ChatGPT</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="ai_tools" value="文心一言" id="tool2" class="hidden" onchange="updateProgress(); checkOtherTools()">
+                                    <label for="tool2" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-center text-sm hover:border-blue-300 transition">文心一言</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="ai_tools" value="豆包" id="tool3" class="hidden" onchange="updateProgress(); checkOtherTools()">
+                                    <label for="tool3" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-center text-sm hover:border-blue-300 transition">豆包</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="ai_tools" value="Claude" id="tool4" class="hidden" onchange="updateProgress(); checkOtherTools()">
+                                    <label for="tool4" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-center text-sm hover:border-blue-300 transition">Claude</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="ai_tools" value="通义千问" id="tool5" class="hidden" onchange="updateProgress(); checkOtherTools()">
+                                    <label for="tool5" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-center text-sm hover:border-blue-300 transition">通义千问</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="ai_tools" value="讯飞星火" id="tool6" class="hidden" onchange="updateProgress(); checkOtherTools()">
+                                    <label for="tool6" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-center text-sm hover:border-blue-300 transition">讯飞星火</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="ai_tools" value="Kimi" id="tool7" class="hidden" onchange="updateProgress(); checkOtherTools()">
+                                    <label for="tool7" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-center text-sm hover:border-blue-300 transition">Kimi</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="ai_tools" value="扣子/Coze" id="tool13" class="hidden" onchange="updateProgress(); checkOtherTools()">
+                                    <label for="tool13" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-center text-sm hover:border-blue-300 transition">扣子/Coze</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="ai_tools" value="WPS AI" id="tool8" class="hidden" onchange="updateProgress(); checkOtherTools()">
+                                    <label for="tool8" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-center text-sm hover:border-blue-300 transition">WPS AI</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="ai_tools" value="微软Copilot" id="tool9" class="hidden" onchange="updateProgress(); checkOtherTools()">
+                                    <label for="tool9" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-center text-sm hover:border-blue-300 transition">微软Copilot</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="ai_tools" value="AI画图工具" id="tool10" class="hidden" onchange="updateProgress(); checkOtherTools()">
+                                    <label for="tool10" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-center text-sm hover:border-blue-300 transition">AI画图工具</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="ai_tools" value="AI视频剪辑" id="tool11" class="hidden" onchange="updateProgress(); checkOtherTools()">
+                                    <label for="tool11" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-center text-sm hover:border-blue-300 transition">AI视频剪辑</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="ai_tools" value="都没用过" id="tool12" class="hidden" onchange="updateProgress(); checkOtherTools()">
+                                    <label for="tool12" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-center text-sm hover:border-blue-300 transition">以上都没用过</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="ai_tools" value="其他" id="tool14" class="hidden" onchange="updateProgress(); checkOtherTools()">
+                                    <label for="tool14" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-center text-sm hover:border-blue-300 transition">其他</label>
+                                </div>
+                            </div>
+                            <div id="other-tools-input" class="mt-3 hidden">
+                                <input type="text" name="ai_tools_other" placeholder="请填写其他AI工具名称（多个用逗号分隔）" 
+                                    class="w-full p-2 border-2 border-gray-200 rounded-lg focus:border-blue-400 focus:outline-none transition text-sm"
+                                    onchange="updateProgress()">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第三部分：AI应用场景 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <span class="w-8 h-8 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-sm font-bold mr-3">3</span>
+                        AI应用场景
+                    </h2>
+                    
+                    <div class="space-y-5">
+                        <div class="question-card">
+                            <p class="font-medium text-gray-700 mb-3">Q5. 您在工作中使用AI处理过哪些任务？（可多选）</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                <div>
+                                    <input type="checkbox" name="work_scenarios" value="文档写作" id="scen1" class="hidden" onchange="updateProgress(); checkOtherScenarios()">
+                                    <label for="scen1" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">📝 文档写作（邮件/报告/方案）</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="work_scenarios" value="文档翻译" id="scen2" class="hidden" onchange="updateProgress(); checkOtherScenarios()">
+                                    <label for="scen2" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">🌍 文档翻译（中英文互译）</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="work_scenarios" value="文档润色摘要" id="scen3" class="hidden" onchange="updateProgress(); checkOtherScenarios()">
+                                    <label for="scen3" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">✨ 文档润色、改写、摘要</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="work_scenarios" value="Excel数据处理" id="scen4" class="hidden" onchange="updateProgress(); checkOtherScenarios()">
+                                    <label for="scen4" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">📊 Excel/表格数据处理</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="work_scenarios" value="数据分析统计" id="scen5" class="hidden" onchange="updateProgress(); checkOtherScenarios()">
+                                    <label for="scen5" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">📈 数据统计与分析</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="work_scenarios" value="PPT制作" id="scen6" class="hidden" onchange="updateProgress(); checkOtherScenarios()">
+                                    <label for="scen6" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">🖥 PPT制作与美化</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="work_scenarios" value="文案创作" id="scen7" class="hidden" onchange="updateProgress(); checkOtherScenarios()">
+                                    <label for="scen7" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">🎨 文案创作（营销/产品介绍）</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="work_scenarios" value="图片生成处理" id="scen8" class="hidden" onchange="updateProgress(); checkOtherScenarios()">
+                                    <label for="scen8" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">🖼 图片生成或处理</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="work_scenarios" value="视频剪辑生成" id="scen9" class="hidden" onchange="updateProgress(); checkOtherScenarios()">
+                                    <label for="scen9" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">🎬 视频剪辑或生成</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="work_scenarios" value="代码编写" id="scen10" class="hidden" onchange="updateProgress(); checkOtherScenarios()">
+                                    <label for="scen10" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">💻 代码编写或问题排查</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="work_scenarios" value="会议纪要" id="scen11" class="hidden" onchange="updateProgress(); checkOtherScenarios()">
+                                    <label for="scen11" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">📋 会议纪要整理</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="work_scenarios" value="知识问答" id="scen12" class="hidden" onchange="updateProgress(); checkOtherScenarios()">
+                                    <label for="scen12" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">❓ 知识问答/信息查询</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="work_scenarios" value="客户服务" id="scen13" class="hidden" onchange="updateProgress(); checkOtherScenarios()">
+                                    <label for="scen13" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">💬 客户服务/售后回复</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="work_scenarios" value="供应链采购" id="scen14" class="hidden" onchange="updateProgress(); checkOtherScenarios()">
+                                    <label for="scen14" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">📦 供应链/采购信息对比</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="work_scenarios" value="财务分析" id="scen15" class="hidden" onchange="updateProgress(); checkOtherScenarios()">
+                                    <label for="scen15" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">💰 财务报表分析</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="work_scenarios" value="品质分析" id="scen16" class="hidden" onchange="updateProgress(); checkOtherScenarios()">
+                                    <label for="scen16" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">🔍 品质问题分析</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="work_scenarios" value="从未使用" id="scen17" class="hidden" onchange="updateProgress(); checkOtherScenarios()">
+                                    <label for="scen17" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">🚫 从未在工作中使用过</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="work_scenarios" value="其他" id="scen18" class="hidden" onchange="updateProgress(); checkOtherScenarios()">
+                                    <label for="scen18" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">✏️ 其他（请填写）</label>
+                                </div>
+                            </div>
+                            <div id="other-scenarios-input" class="mt-3 hidden">
+                                <input type="text" name="work_scenarios_other" placeholder="请填写其他应用场景（多个用逗号分隔）" 
+                                    class="w-full p-2 border-2 border-gray-200 rounded-lg focus:border-blue-400 focus:outline-none transition text-sm"
+                                    onchange="updateProgress()">
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <p class="font-medium text-gray-700 mb-3">Q6. 您使用AI处理工作任务的频率大概是？<span class="text-red-500">*</span></p>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+                                <div>
+                                    <input type="radio" name="usage_frequency" value="每天都用" id="freq1" class="hidden" onchange="updateProgress()">
+                                    <label for="freq1" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">每天都用</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="usage_frequency" value="每周3-4次" id="freq2" class="hidden" onchange="updateProgress()">
+                                    <label for="freq2" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">每周3-4次</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="usage_frequency" value="每周1-2次" id="freq3" class="hidden" onchange="updateProgress()">
+                                    <label for="freq3" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">每周1-2次</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="usage_frequency" value="每月几次" id="freq4" class="hidden" onchange="updateProgress()">
+                                    <label for="freq4" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">每月几次</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="usage_frequency" value="很少用" id="freq5" class="hidden" onchange="updateProgress()">
+                                    <label for="freq5" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">很少用</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="usage_frequency" value="从未用过" id="freq6" class="hidden" onchange="updateProgress()">
+                                    <label for="freq6" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">从未用过</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <p class="font-medium text-gray-700 mb-3">Q7. AI工具对您的工作效率提升有多大？<span class="text-red-500">*</span></p>
+                            <div class="space-y-2">
+                                <div>
+                                    <input type="radio" name="efficiency_boost" value="提升非常大（50%+）" id="eff1" class="hidden" onchange="updateProgress()">
+                                    <label for="eff1" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-300 transition">
+                                        <span class="font-medium">提升非常大</span> — 节省50%以上时间
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="efficiency_boost" value="提升较大（30-50%）" id="eff2" class="hidden" onchange="updateProgress()">
+                                    <label for="eff2" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-300 transition">
+                                        <span class="font-medium">提升较大</span> — 节省30%-50%时间
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="efficiency_boost" value="有一定提升（10-30%）" id="eff3" class="hidden" onchange="updateProgress()">
+                                    <label for="eff3" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-300 transition">
+                                        <span class="font-medium">有一定提升</span> — 节省10%-30%时间
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="efficiency_boost" value="提升不大（<10%）" id="eff4" class="hidden" onchange="updateProgress()">
+                                    <label for="eff4" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-300 transition">
+                                        <span class="font-medium">提升不大</span> — 节省10%以内时间
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="efficiency_boost" value="没什么帮助" id="eff5" class="hidden" onchange="updateProgress()">
+                                    <label for="eff5" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-300 transition">
+                                        <span class="font-medium">没什么帮助</span>
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="efficiency_boost" value="没用过不清楚" id="eff6" class="hidden" onchange="updateProgress()">
+                                    <label for="eff6" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-300 transition">
+                                        <span class="font-medium">没用过，不清楚</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第四部分：障碍与需求 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <span class="w-8 h-8 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center text-sm font-bold mr-3">4</span>
+                        障碍与需求
+                    </h2>
+                    
+                    <div class="space-y-5">
+                        <div class="question-card">
+                            <p class="font-medium text-gray-700 mb-3">Q8. 您在使用AI工具时遇到的主要障碍是什么？（可多选）</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                <div>
+                                    <input type="checkbox" name="barriers" value="不了解AI能做什么" id="bar1" class="hidden" onchange="updateProgress()">
+                                    <label for="bar1" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">🤔 不知道怎么用，不了解AI能做什么</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="barriers" value="不会写提示词" id="bar2" class="hidden" onchange="updateProgress()">
+                                    <label for="bar2" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">✍️ 不会写提示词，输出结果不好</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="barriers" value="数据安全顾虑" id="bar3" class="hidden" onchange="updateProgress()">
+                                    <label for="bar3" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">🔒 担心数据安全和保密问题</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="barriers" value="网络限制" id="bar4" class="hidden" onchange="updateProgress()">
+                                    <label for="bar4" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">🌐 公司网络限制，访问不了</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="barriers" value="费用问题" id="bar5" class="hidden" onchange="updateProgress()">
+                                    <label for="bar5" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">💰 工具需要付费，公司不报销</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="barriers" value="结果不准确" id="bar6" class="hidden" onchange="updateProgress()">
+                                    <label for="bar6" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">⚠️ 输出结果不准确，需反复修改</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="barriers" value="语言障碍" id="bar7" class="hidden" onchange="updateProgress()">
+                                    <label for="bar7" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">🗣 英文不好，很多工具是英文的</label>
+                                </div>
+                                <div>
+                                    <input="checkbox" name="barriers" value="没障碍" id="bar9" class="hidden" onchange="updateProgress()">
+                                    <label for="bar9" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">✅ 使用顺畅，没什么障碍</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <p class="font-medium text-gray-700 mb-3">Q9. 您最希望获得哪些方面的AI培训？（可多选）</p>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div>
+                                    <input type="checkbox" name="training_needs" value="AI基础操作入门" id="train1" class="hidden" onchange="updateProgress(); checkOtherTraining()">
+                                    <label for="train1" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">🎓 AI工具基础操作入门</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="training_needs" value="提示词编写技巧" id="train2" class="hidden" onchange="updateProgress(); checkOtherTraining()">
+                                    <label for="train2" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">💡 提示词编写技巧</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="training_needs" value="文档写作实操" id="train3" class="hidden" onchange="updateProgress(); checkOtherTraining()">
+                                    <label for="train3" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">📝 文档/邮件写作场景实操</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="training_needs" value="Excel数据处理" id="train4" class="hidden" onchange="updateProgress(); checkOtherTraining()">
+                                    <label for="train4" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">📊 Excel/表格数据处理实操</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="training_needs" value="PPT制作" id="train5" class="hidden" onchange="updateProgress(); checkOtherTraining()">
+                                    <label for="train5" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">🖥 PPT快速制作实操</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="training_needs" value="数据安全脱敏" id="train6" class="hidden" onchange="updateProgress(); checkOtherTraining()">
+                                    <label for="train6" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">🔒 数据安全与脱敏方法</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="training_needs" value="岗位专属场景" id="train7" class="hidden" onchange="updateProgress(); checkOtherTraining()">
+                                    <label for="train7" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">👔 各岗位专属AI应用场景</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="training_needs" value="代码技术应用" id="train8" class="hidden" onchange="updateProgress(); checkOtherTraining()">
+                                    <label for="train8" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">💻 代码/技术类AI应用</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="training_needs" value="设计创意应用" id="train9" class="hidden" onchange="updateProgress(); checkOtherTraining()">
+                                    <label for="train9" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">🎨 设计/创意类AI应用</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="training_needs" value="其他" id="train10" class="hidden" onchange="updateProgress(); checkOtherTraining()">
+                                    <label for="train10" class="block p-2 border-2 border-gray-200 rounded-lg cursor-pointer text-sm hover:border-blue-300 transition">✏️ 其他（请填写）</label>
+                                </div>
+                            </div>
+                            <div id="other-training-input" class="mt-3 hidden">
+                                <input type="text" name="training_needs_other" placeholder="请填写其他培训需求（多个用逗号分隔）" 
+                                    class="w-full p-2 border-2 border-gray-200 rounded-lg focus:border-blue-400 focus:outline-none transition text-sm"
+                                    onchange="updateProgress()">
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <p class="font-medium text-gray-700 mb-3">Q10. 如果公司组织AI工具培训，您更倾向于哪种形式？<span class="text-red-500">*</span></p>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+                                <div>
+                                    <input type="radio" name="training_form" value="线下集中培训" id="form1" class="hidden" onchange="updateProgress()">
+                                    <label for="form1" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">线下集中培训</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="training_form" value="线上直播培训" id="form2" class="hidden" onchange="updateProgress()">
+                                    <label for="form2" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">线上直播培训</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="training_form" value="录播视频" id="form3" class="hidden" onchange="updateProgress()">
+                                    <label for="form3" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">录播视频</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="training_form" value="图文手册+实操" id="form4" class="hidden" onchange="updateProgress()">
+                                    <label for="form4" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">图文手册+实操</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="training_form" value="一对一辅导" id="form5" class="hidden" onchange="updateProgress()">
+                                    <label for="form5" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">一对一辅导</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="training_form" value="部门内部分享" id="form6" class="hidden" onchange="updateProgress()">
+                                    <label for="form6" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">部门内部分享会</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <p class="font-medium text-gray-700 mb-3">Q11. 您愿意花多少时间学习AI工具？<span class="text-red-500">*</span></p>
+                            <div class="grid grid-cols-3 md:grid-cols-5 gap-2">
+                                <div>
+                                    <input type="radio" name="learning_time" value="1小时以内" id="time1" class="hidden" onchange="updateProgress()">
+                                    <label for="time1" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">1小时以内</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="learning_time" value="1-3小时" id="time2" class="hidden" onchange="updateProgress()">
+                                    <label for="time2" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">1-3小时</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="learning_time" value="3-5小时" id="time3" class="hidden" onchange="updateProgress()">
+                                    <label for="time3" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">3-5小时</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="learning_time" value="5-10小时" id="time4" class="hidden" onchange="updateProgress()">
+                                    <label for="time4" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">5-10小时</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="learning_time" value="10小时以上" id="time5" class="hidden" onchange="updateProgress()">
+                                    <label for="time5" class="block p-3 border-2 border-gray-200 rounded-lg cursor-pointer text-center hover:border-blue-300 transition">10小时以上</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第五部分：开放建议 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                        <span class="w-8 h-8 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center text-sm font-bold mr-3">5</span>
+                        开放建议
+                    </h2>
+                    
+                    <div class="question-card">
+                        <p class="font-medium text-gray-700 mb-3">Q12. 您对公司推广AI工具有什么建议或想法？</p>
+                        <textarea name="suggestions" rows="4" placeholder="请分享您的任何想法、建议或担忧..." 
+                            class="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-blue-400 focus:outline-none resize-none transition"
+                            onchange="updateProgress()"></textarea>
+                    </div>
+                </div>
+
+                <!-- 提交按钮 -->
+                <div class="text-center pb-8">
+                    <button type="button" onclick="submitSurvey()" 
+                        class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-12 py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all">
+                        提交问卷 🎉
+                    </button>
+                    <p class="text-gray-500 text-sm mt-3">提交后将生成答卷文件，请保存并发送给管理员</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 统计分析页面 -->
+    <div id="page-analysis" class="hidden fade-in">
+        <div class="max-w-6xl mx-auto px-4 py-8">
+            <!-- 标题区 -->
+            <div class="bg-gradient-to-r from-emerald-600 to-teal-600 rounded-2xl p-8 text-white mb-8">
+                <h1 class="text-2xl md:text-3xl font-bold mb-2">📊 AI工具使用情况 - 统计分析</h1>
+                <p class="text-emerald-100">数据驱动决策，精准定位培训需求</p>
+            </div>
+
+            <!-- 数据导入区 -->
+            <div class="bg-white rounded-xl p-6 shadow-sm mb-8">
+                <h2 class="text-lg font-semibold text-gray-800 mb-4">📁 导入答卷数据</h2>
+                <div class="flex flex-col md:flex-row gap-4">
+                    <div class="flex-1">
+                        <label class="block w-full p-8 border-2 border-dashed border-gray-300 rounded-xl text-center cursor-pointer hover:border-blue-400 hover:bg-blue-50 transition">
+                            <input type="file" id="file-input" multiple accept=".json" class="hidden" onchange="handleFileUpload(event)">
+                            <div class="text-4xl mb-2">📤</div>
+                            <p class="text-gray-600 font-medium">点击或拖拽JSON答卷文件到这里</p>
+                            <p class="text-gray-400 text-sm mt-1">支持多选批量导入</p>
+                        </label>
+                    </div>
+                    <div class="flex flex-col justify-center">
+                        <button onclick="clearData()" class="px-6 py-2 bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200 transition mb-2">
+                            清空数据
+                        </button>
+                        <button onclick="exportExcel()" class="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition">
+                            导出Excel
+                        </button>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center gap-4">
+                    <div class="text-sm text-gray-600">
+                        已收集答卷：<span id="response-count" class="font-bold text-blue-600">0</span> 份
+                    </div>
+                </div>
+            </div>
+
+            <!-- 统计图表区 -->
+            <div id="charts-container" class="space-y-8">
+                <!-- 基本信息统计 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-4">👥 人员分布</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="font-medium text-gray-700 mb-3">部门分布</h3>
+                            <canvas id="chart-department"></canvas>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-gray-700 mb-3">岗位类型分布</h3>
+                            <canvas id="chart-position"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI使用水平 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-4">📈 AI使用水平</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="font-medium text-gray-700 mb-3">AI使用程度分布</h3>
+                            <canvas id="chart-ai-level"></canvas>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-gray-700 mb-3">使用频率分布</h3>
+                            <canvas id="chart-frequency"></canvas>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <h3 class="font-medium text-gray-700 mb-3">常用AI工具（Top 10）</h3>
+                        <canvas id="chart-tools"></canvas>
+                    </div>
+                </div>
+
+                <!-- 应用场景 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-4">💼 应用场景与效率</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="font-medium text-gray-700 mb-3">工作应用场景分布</h3>
+                            <canvas id="chart-scenarios"></canvas>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-gray-700 mb-3">效率提升评估</h3>
+                            <canvas id="chart-efficiency"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 障碍与需求 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-4">🎯 障碍与培训需求</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="font-medium text-gray-700 mb-3">主要使用障碍</h3>
+                            <canvas id="chart-barriers"></canvas>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-gray-700 mb-3">培训需求分布</h3>
+                            <canvas id="chart-training"></canvas>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                        <div>
+                            <h3 class="font-medium text-gray-700 mb-3">偏好的培训形式</h3>
+                            <canvas id="chart-training-form"></canvas>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-gray-700 mb-3">愿意投入的学习时间</h3>
+                            <canvas id="chart-learning-time"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 开放建议 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-4">💭 开放建议汇总</h2>
+                    <div id="suggestions-list" class="space-y-3">
+                        <p class="text-gray-400 text-center py-8">暂无数据</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 提交成功弹窗 -->
+    <div id="success-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-2xl p-8 max-w-md mx-4 text-center transform transition-all">
+            <div class="text-6xl mb-4">🎉</div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-2">提交成功！</h3>
+            <p class="text-gray-600 mb-6">感谢您参与本次调研，您的反馈对我们非常重要。</p>
+            <div class="bg-blue-50 rounded-xl p-4 mb-6">
+                <p class="text-blue-800 font-medium mb-2">下一步操作：</p>
+                <p class="text-blue-600 text-sm">请点击下方按钮下载答卷文件，并发送给管理员。</p>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="downloadResponse()" class="flex-1 bg-blue-500 text-white py-3 rounded-xl font-medium hover:bg-blue-600 transition">
+                    📥 下载答卷文件
+                </button>
+                <button onclick="closeModal()" class="flex-1 bg-gray-100 text-gray-600 py-3 rounded-xl font-medium hover:bg-gray-200 transition">
+                    返回
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allResponses = [];
+        let currentResponse = null;
+        let charts = {};
+
+        // 标签页切换
+        function showTab(tab) {
+            document.getElementById('page-survey').classList.add('hidden');
+            document.getElementById('page-analysis').classList.add('hidden');
+            document.getElementById('tab-survey').classList.remove('tab-active');
+            document.getElementById('tab-analysis').classList.remove('tab-active');
+            document.getElementById('tab-survey').classList.add('text-gray-500');
+            document.getElementById('tab-analysis').classList.add('text-gray-500');
+
+            if (tab === 'survey') {
+                document.getElementById('page-survey').classList.remove('hidden');
+                document.getElementById('tab-survey').classList.add('tab-active');
+                document.getElementById('tab-survey').classList.remove('text-gray-500');
+            } else {
+                document.getElementById('page-analysis').classList.remove('hidden');
+                document.getElementById('tab-analysis').classList.add('tab-active');
+                document.getElementById('tab-analysis').classList.remove('text-gray-500');
+                setTimeout(() => {
+                    if (allResponses.length > 0) {
+                        renderAllCharts();
+                    }
+                }, 100);
+            }
+        }
+
+        // 切换部门其他输入框
+        function toggleOtherDept() {
+            const isOther = document.querySelector('input[name="department"][value="其他"]').checked;
+            document.getElementById('other-dept-input').classList.toggle('hidden', !isOther);
+        }
+
+        // 检查AI工具其他选项
+        function checkOtherTools() {
+            const isOther = document.querySelector('input[name="ai_tools"][value="其他"]').checked;
+            document.getElementById('other-tools-input').classList.toggle('hidden', !isOther);
+        }
+
+        // 检查工作场景其他选项
+        function checkOtherScenarios() {
+            const isOther = document.querySelector('input[name="work_scenarios"][value="其他"]').checked;
+            document.getElementById('other-scenarios-input').classList.toggle('hidden', !isOther);
+        }
+
+        // 检查培训需求其他选项
+        function checkOtherTraining() {
+            const isOther = document.querySelector('input[name="training_needs"][value="其他"]').checked;
+            document.getElementById('other-training-input').classList.toggle('hidden', !isOther);
+        }
+
+        // 更新进度
+        function updateProgress() {
+            const form = document.getElementById('survey-form');
+            const requiredFields = ['name', 'department', 'position', 'ai_level', 'usage_frequency', 'efficiency_boost', 'training_form', 'learning_time'];
+            const optionalFields = ['ai_tools', 'work_scenarios', 'barriers', 'training_needs', 'suggestions'];
+            
+            let completed = 0;
+            let total = requiredFields.length + optionalFields.length;
+
+            requiredFields.forEach(field => {
+                if (field === 'name') {
+                    const input = form.querySelector('input[name="name"]');
+                    if (input && input.value.trim().length > 0) completed++;
+                } else {
+                    const radios = form.querySelectorAll(`input[name="${field}"]:checked`);
+                    if (radios.length > 0) completed++;
+                }
+            });
+
+            optionalFields.forEach(field => {
+                if (field === 'suggestions') {
+                    const textarea = form.querySelector(`textarea[name="${field}"]`);
+                    if (textarea && textarea.value.trim().length > 0) completed++;
+                } else {
+                    const checkboxes = form.querySelectorAll(`input[name="${field}"]:checked`);
+                    if (checkboxes.length > 0) completed++;
+                }
+            });
+
+            const percent = Math.round((completed / total) * 100);
+            document.getElementById('progress-bar').style.width = percent + '%';
+            document.getElementById('progress-text').textContent = percent + '%';
+        }
+
+        // 提交问卷
+        function submitSurvey() {
+            const form = document.getElementById('survey-form');
+            
+            // 验证必填项
+            const requiredFields = ['name', 'department', 'position', 'ai_level', 'usage_frequency', 'efficiency_boost', 'training_form', 'learning_time'];
+            for (const field of requiredFields) {
+                if (field === 'name') {
+                    const input = form.querySelector('input[name="name"]');
+                    if (!input || input.value.trim().length === 0) {
+                        alert('请填写您的姓名');
+                        return;
+                    }
+                } else {
+                    const radios = form.querySelectorAll(`input[name="${field}"]:checked`);
+                    if (radios.length === 0) {
+                        alert('请填写所有必填项（标有*的问题）');
+                        return;
+                    }
+                }
+            }
+
+            // 收集数据
+            const formData = new FormData(form);
+            
+            // 处理单选字段
+            let department = formData.get('department');
+            if (department === '其他') {
+                const otherDept = formData.get('department_other');
+                if (otherDept && otherDept.trim()) {
+                    department = otherDept.trim();
+                }
+            }
+
+            // 处理多选字段 - AI工具
+            let aiTools = formData.getAll('ai_tools');
+            const otherToolsIndex = aiTools.indexOf('其他');
+            if (otherToolsIndex > -1) {
+                aiTools.splice(otherToolsIndex, 1);
+                const otherToolsVal = formData.get('ai_tools_other');
+                if (otherToolsVal && otherToolsVal.trim()) {
+                    const otherTools = otherToolsVal.split(/[,，、]/).map(t => t.trim()).filter(t => t);
+                    aiTools = aiTools.concat(otherTools);
+                }
+            }
+
+            // 处理多选字段 - 工作场景
+            let workScenarios = formData.getAll('work_scenarios');
+            const otherScenIndex = workScenarios.indexOf('其他');
+            if (otherScenIndex > -1) {
+                workScenarios.splice(otherScenIndex, 1);
+                const otherScenVal = formData.get('work_scenarios_other');
+                if (otherScenVal && otherScenVal.trim()) {
+                    const otherScens = otherScenVal.split(/[,，、]/).map(t => t.trim()).filter(t => t);
+                    workScenarios = workScenarios.concat(otherScens);
+                }
+            }
+
+            // 处理多选字段 - 培训需求
+            let trainingNeeds = formData.getAll('training_needs');
+            const otherTrainIndex = trainingNeeds.indexOf('其他');
+            if (otherTrainIndex > -1) {
+                trainingNeeds.splice(otherTrainIndex, 1);
+                const otherTrainVal = formData.get('training_needs_other');
+                if (otherTrainVal && otherTrainVal.trim()) {
+                    const otherTrains = otherTrainVal.split(/[,，、]/).map(t => t.trim()).filter(t => t);
+                    trainingNeeds = trainingNeeds.concat(otherTrains);
+                }
+            }
+
+            const response = {
+                timestamp: new Date().toISOString(),
+                name: formData.get('name'),
+                department: department,
+                position: formData.get('position'),
+                ai_level: formData.get('ai_level'),
+                ai_tools: aiTools,
+                work_scenarios: workScenarios,
+                usage_frequency: formData.get('usage_frequency'),
+                efficiency_boost: formData.get('efficiency_boost'),
+                barriers: formData.getAll('barriers'),
+                training_needs: trainingNeeds,
+                training_form: formData.get('training_form'),
+                learning_time: formData.get('learning_time'),
+                suggestions: formData.get('suggestions')
+            };
+
+            // 提交数据到 API
+            try {
+                await fetch('http://freedb.darren.host/api/json-data', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(response)
+                });
+            } catch (error) {
+                console.error('提交失败:', error);
+            }
+            
+            currentResponse = response;
+            document.getElementById('success-modal').classList.remove('hidden');
+        }
+
+        // 下载答卷
+        function downloadResponse() {
+            if (!currentResponse) return;
+            
+            const blob = new Blob([JSON.stringify(currentResponse, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `AI调研答卷_${currentResponse.name || ''}_${currentResponse.department}_${new Date().toLocaleDateString()}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // 关闭弹窗
+        function closeModal() {
+            document.getElementById('success-modal').classList.add('hidden');
+        }
+
+        // 文件上传处理
+        function handleFileUpload(event) {
+            const files = event.target.files;
+            let loaded = 0;
+
+            for (const file of files) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        const response = JSON.parse(e.target.result);
+                        allResponses.push(response);
+                        loaded++;
+                        document.getElementById('response-count').textContent = allResponses.length;
+                        
+                        if (loaded === files.length) {
+                            renderAllCharts();
+                            renderSuggestions();
+                        }
+                    } catch (err) {
+                        console.error('解析文件失败:', file.name, err);
+                    }
+                };
+                reader.readAsText(file);
+            }
+        }
+
+        // 清空数据
+        function clearData() {
+            if (confirm('确定要清空所有已导入的数据吗？')) {
+                allResponses = [];
+                document.getElementById('response-count').textContent = '0';
+                document.getElementById('file-input').value = '';
+                Object.values(charts).forEach(chart => chart.destroy());
+                charts = {};
+                document.getElementById('suggestions-list').innerHTML = '<p class="text-gray-400 text-center py-8">暂无数据</p>';
+            }
+        }
+
+        // 统计单选数据
+        function countSingle(field) {
+            const counts = {};
+            allResponses.forEach(r => {
+                const val = r[field] || '未填写';
+                counts[val] = (counts[val] || 0) + 1;
+            });
+            return counts;
+        }
+
+        // 统计多选数据
+        function countMultiple(field) {
+            const counts = {};
+            allResponses.forEach(r => {
+                const items = r[field] || [];
+                items.forEach(item => {
+                    counts[item] = (counts[item] || 0) + 1;
+                });
+            });
+            return counts;
+        }
+
+        // 创建饼图
+        function createPieChart(canvasId, data, title) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            if (charts[canvasId]) charts[canvasId].destroy();
+
+            const labels = Object.keys(data);
+            const values = Object.values(data);
+            const colors = [
+                '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6',
+                '#ec4899', '#06b6d4', '#84cc16', '#f97316', '#6366f1'
+            ];
+
+            charts[canvasId] = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: values,
+                        backgroundColor: colors.slice(0, labels.length),
+                        borderWidth: 2,
+                        borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { boxWidth: 12, padding: 10, font: { size: 11 } }
+                        }
+                    }
+                }
+            });
+        }
+
+        // 创建柱状图
+        function createBarChart(canvasId, data, title, horizontal = false) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            if (charts[canvasId]) charts[canvasId].destroy();
+
+            const entries = Object.entries(data).sort((a, b) => b[1] - a[1]);
+            const labels = entries.map(e => e[0]);
+            const values = entries.map(e => e[1]);
+
+            charts[canvasId] = new Chart(ctx, {
+                type: horizontal ? 'bar' : 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: '人数',
+                        data: values,
+                        backgroundColor: 'rgba(59, 130, 246, 0.8)',
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    indexAxis: horizontal ? 'y' : 'x',
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: { beginAtZero: true },
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+        }
+
+        // 渲染所有图表
+        function renderAllCharts() {
+            // 人员分布
+            createPieChart('chart-department', countSingle('department'), '部门分布');
+            createPieChart('chart-position', countSingle('position'), '岗位分布');
+
+            // AI使用水平
+            createPieChart('chart-ai-level', countSingle('ai_level'), '使用程度');
+            createPieChart('chart-frequency', countSingle('usage_frequency'), '使用频率');
+            createBarChart('chart-tools', countMultiple('ai_tools'), '常用工具', true);
+
+            // 应用场景
+            createBarChart('chart-scenarios', countMultiple('work_scenarios'), '应用场景', true);
+            createPieChart('chart-efficiency', countSingle('efficiency_boost'), '效率提升');
+
+            // 障碍与需求
+            createBarChart('chart-barriers', countMultiple('barriers'), '使用障碍', true);
+            createBarChart('chart-training', countMultiple('training_needs'), '培训需求', true);
+            createPieChart('chart-training-form', countSingle('training_form'), '培训形式');
+            createPieChart('chart-learning-time', countSingle('learning_time'), '学习时间');
+        }
+
+        // 渲染建议列表
+        function renderSuggestions() {
+            const container = document.getElementById('suggestions-list');
+            const suggestions = allResponses.filter(r => r.suggestions && r.suggestions.trim());
+
+            if (suggestions.length === 0) {
+                container.innerHTML = '<p class="text-gray-400 text-center py-8">暂无开放建议</p>';
+                return;
+            }
+
+            container.innerHTML = suggestions.map(s => `
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <div class="flex items-start gap-3">
+                        <span class="text-xl">💬</span>
+                        <div>
+                            <p class="text-gray-700">${s.suggestions}</p>
+                            <p class="text-gray-400 text-sm mt-2">${s.department} · ${s.position}</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 导出Excel
+        function exportExcel() {
+            if (allResponses.length === 0) {
+                alert('暂无数据可导出');
+                return;
+            }
+
+            // 准备数据
+            const headers = ['提交时间', '姓名', '部门', '岗位', 'AI使用程度', '使用频率', '效率提升', '培训形式', '学习时间', '常用AI工具', '工作应用场景', '主要障碍', '培训需求', '建议'];
+            const rows = allResponses.map(r => [
+                new Date(r.timestamp).toLocaleString('zh-CN'),
+                r.name || '',
+                r.department,
+                r.position,
+                r.ai_level,
+                r.usage_frequency,
+                r.efficiency_boost,
+                r.training_form,
+                r.learning_time,
+                (r.ai_tools || []).join('、'),
+                (r.work_scenarios || []).join('、'),
+                (r.barriers || []).join('、'),
+                (r.training_needs || []).join('、'),
+                r.suggestions || ''
+            ]);
+
+            // 创建工作簿
+            const wb = XLSX.utils.book_new();
+            const ws = XLSX.utils.aoa_to_sheet([headers, ...rows]);
+            
+            // 设置列宽
+            ws['!cols'] = [
+                { wch: 20 }, { wch: 12 }, { wch: 12 }, { wch: 15 }, { wch: 12 },
+                { wch: 18 }, { wch: 12 }, { wch: 12 }, { wch: 30 }, { wch: 30 },
+                { wch: 25 }, { wch: 25 }, { wch: 40 }
+            ];
+
+            XLSX.utils.book_append_sheet(wb, ws, '调研数据');
+
+            // 导出
+            XLSX.writeFile(wb, `AI工具使用情况调研_${allResponses.length}份.xlsx`);
+        }
+
+        // 初始化进度
+        updateProgress();
+    </script>
+</body>
+</html>
