@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI工具使用情况调研 - 综合看板</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        body { font-family: 'Noto Sans SC', sans-serif; }
+        .card { background: white; border-radius: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06); padding: 24px; }
+        .card-title { font-size: 16px; font-weight: 700; color: #1f2937; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+        .kpi { border-radius: 16px; padding: 24px; color: white; text-align: center; }
+        .kpi-val { font-size: 36px; font-weight: 700; line-height: 1.2; }
+        .kpi-label { font-size: 13px; opacity: 0.85; margin-top: 4px; }
+        .maturity-bar { height: 8px; border-radius: 4px; background: #e5e7eb; overflow: hidden; }
+        .maturity-fill { height: 100%; border-radius: 4px; }
+        .tag { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 500; margin: 2px; }
+        .sug-card { background: #f9fafb; border-left: 4px solid #6366f1; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-bottom: 8px; }
+        .section-header { font-size: 20px; font-weight: 700; color: #111827; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 3px solid #6366f1; display: flex; align-items: center; gap: 8px; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 text-white">
+        <div class="max-w-7xl mx-auto px-6 py-10">
+            <h1 class="text-3xl font-bold mb-2">📊 AI工具使用情况调研 — 综合看板</h1>
+            <p class="text-white/80 text-sm">基于 65 份有效问卷 · 覆盖 10 个部门 · 2026年6月</p>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 py-8 space-y-8">
+
+        <div class="section-header">🎯 核心指标概览</div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="kpi" style="background: linear-gradient(135deg, #3b82f6, #2563eb);">
+                <div class="kpi-val">65</div><div class="kpi-label">有效问卷数</div>
+            </div>
+            <div class="kpi" style="background: linear-gradient(135deg, #10b981, #059669);">
+                <div class="kpi-val">43.1%</div><div class="kpi-label">经常/熟练使用者占比</div>
+            </div>
+            <div class="kpi" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                <div class="kpi-val">80.0%</div><div class="kpi-label">高频使用者(周3次+)</div>
+            </div>
+            <div class="kpi" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                <div class="kpi-val">32.3%</div><div class="kpi-label">效率提升30%以上</div>
+            </div>
+        </div>
+
+        <div class="section-header">👥 人员画像分布</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="card">
+                <div class="card-title">🏢 部门参与情况（10个部门）</div>
+                <div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="技术部">技术部</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-blue-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 26%">
+                <span class="text-white text-xs font-bold">17</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">26.2%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="外贸销售部">外贸销售部</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-indigo-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 23%">
+                <span class="text-white text-xs font-bold">15</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">23.1%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="市场运营部">市场运营部</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-purple-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 11%">
+                <span class="text-white text-xs font-bold">7</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">10.8%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="内贸销售部">内贸销售部</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-pink-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 9%">
+                <span class="text-white text-xs font-bold">6</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">9.2%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="品质部">品质部</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-red-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">5</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">7.7%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="售后部">售后部</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-orange-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">5</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">7.7%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="财务部">财务部</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-amber-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">4</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">6.2%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="采购部">采购部</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-emerald-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">3</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">4.6%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="行政人事部">行政人事部</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-teal-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">2</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">3.1%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="生产部">生产部</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-cyan-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">1</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">1.5%</span>
+    </div>
+            </div>
+            <div class="card">
+                <div class="card-title">💼 岗位类型分布</div>
+                <div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="执行岗">执行岗</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-blue-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 43%">
+                <span class="text-white text-xs font-bold">28</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">43.1%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="专业岗">专业岗</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-indigo-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 40%">
+                <span class="text-white text-xs font-bold">26</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">40.0%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="管理岗">管理岗</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-purple-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 17%">
+                <span class="text-white text-xs font-bold">11</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">16.9%</span>
+    </div>
+            </div>
+        </div>
+
+        <div class="section-header">📈 AI使用水平分析</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="card">
+                <div class="card-title">🧠 AI使用程度分布</div>
+                <div class="flex flex-wrap gap-2 mb-4"><div class="flex-1 min-w-[120px] bg-red-50 rounded-lg p-3 text-center"><div class="text-2xl font-bold text-red-700">0</div><div class="text-xs text-gray-500 mt-1">完全不了解</div></div><div class="flex-1 min-w-[120px] bg-orange-50 rounded-lg p-3 text-center"><div class="text-2xl font-bold text-orange-700">1</div><div class="text-xs text-gray-500 mt-1">听说过未使用</div></div><div class="flex-1 min-w-[120px] bg-yellow-50 rounded-lg p-3 text-center"><div class="text-2xl font-bold text-yellow-700">2</div><div class="text-xs text-gray-500 mt-1">尝试过</div></div><div class="flex-1 min-w-[120px] bg-blue-50 rounded-lg p-3 text-center"><div class="text-2xl font-bold text-blue-700">34</div><div class="text-xs text-gray-500 mt-1">偶尔使用</div></div><div class="flex-1 min-w-[120px] bg-emerald-50 rounded-lg p-3 text-center"><div class="text-2xl font-bold text-emerald-700">25</div><div class="text-xs text-gray-500 mt-1">经常使用</div></div><div class="flex-1 min-w-[120px] bg-purple-50 rounded-lg p-3 text-center"><div class="text-2xl font-bold text-purple-700">3</div><div class="text-xs text-gray-500 mt-1">非常熟练</div></div></div>
+                <div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="完全不了解">完全不了解</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-red-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">0</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">0.0%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="听说过未使用">听说过未使用</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-orange-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">1</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">1.5%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="尝试过">尝试过</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-yellow-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">2</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">3.1%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="偶尔使用">偶尔使用</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-blue-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 52%">
+                <span class="text-white text-xs font-bold">34</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">52.3%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="经常使用">经常使用</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-emerald-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 38%">
+                <span class="text-white text-xs font-bold">25</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">38.5%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="非常熟练">非常熟练</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-purple-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">3</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">4.6%</span>
+    </div>
+            </div>
+            <div class="card">
+                <div class="card-title">⏱ 使用频率分布</div>
+                <div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="每天都用">每天都用</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-blue-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 51%">
+                <span class="text-white text-xs font-bold">33</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">50.8%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="每周3-4次">每周3-4次</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-indigo-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 29%">
+                <span class="text-white text-xs font-bold">19</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">29.2%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="每周1-2次">每周1-2次</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-purple-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 15%">
+                <span class="text-white text-xs font-bold">10</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">15.4%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="每月几次">每月几次</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-pink-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">3</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">4.6%</span>
+    </div>
+                <div class="mt-4 p-3 bg-emerald-50 rounded-lg">
+                    <p class="text-sm text-emerald-800">💡 <strong>50.8%</strong> 的员工每天都在使用AI工具，说明AI已深度融入日常工作。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-header">🛠 AI工具与应用场景</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="card">
+                <div class="card-title">🔧 常用AI工具 TOP 15</div>
+                <div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="豆包">豆包</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-blue-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 100%">
+                <span class="text-white text-xs font-bold">59</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">90.8%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="ChatGPT">ChatGPT</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-indigo-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 46%">
+                <span class="text-white text-xs font-bold">27</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">41.5%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="Kimi">Kimi</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-purple-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 34%">
+                <span class="text-white text-xs font-bold">20</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">30.8%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="通义千问">通义千问</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-pink-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 32%">
+                <span class="text-white text-xs font-bold">19</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">29.2%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="文心一言">文心一言</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-red-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 25%">
+                <span class="text-white text-xs font-bold">15</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">23.1%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="WPS AI">WPS AI</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-orange-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 20%">
+                <span class="text-white text-xs font-bold">12</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">18.5%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="AI画图工具">AI画图工具</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-amber-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 12%">
+                <span class="text-white text-xs font-bold">7</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">10.8%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="DeepSeek">DeepSeek</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-emerald-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 12%">
+                <span class="text-white text-xs font-bold">7</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">10.8%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="扣子/Coze">扣子/Coze</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-teal-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">5</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">7.7%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="Claude">Claude</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-cyan-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">4</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">6.2%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="AI视频剪辑">AI视频剪辑</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-blue-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">3</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">4.6%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="即梦">即梦</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-indigo-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">2</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">3.1%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="cursor">cursor</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-purple-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">1</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">1.5%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="讯飞星火">讯飞星火</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-pink-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">1</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">1.5%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="Codex">Codex</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-red-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">1</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">1.5%</span>
+    </div>
+            </div>
+            <div class="card">
+                <div class="card-title">💼 工作应用场景分布</div>
+                <div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="文档翻译">文档翻译</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-blue-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 100%">
+                <span class="text-white text-xs font-bold">43</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">66.2%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="文档写作">文档写作</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-indigo-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 93%">
+                <span class="text-white text-xs font-bold">40</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">61.5%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="文档润色摘要">文档润色摘要</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-purple-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 88%">
+                <span class="text-white text-xs font-bold">38</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">58.5%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="知识问答">知识问答</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-pink-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 86%">
+                <span class="text-white text-xs font-bold">37</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">56.9%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="PPT制作">PPT制作</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-red-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 65%">
+                <span class="text-white text-xs font-bold">28</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">43.1%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="图片生成处理">图片生成处理</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-orange-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 60%">
+                <span class="text-white text-xs font-bold">26</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">40.0%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="Excel数据处理">Excel数据处理</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-amber-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 42%">
+                <span class="text-white text-xs font-bold">18</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">27.7%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="数据分析统计">数据分析统计</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-emerald-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 37%">
+                <span class="text-white text-xs font-bold">16</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">24.6%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="会议纪要">会议纪要</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-teal-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 37%">
+                <span class="text-white text-xs font-bold">16</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">24.6%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="文案创作">文案创作</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-cyan-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 28%">
+                <span class="text-white text-xs font-bold">12</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">18.5%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="品质分析">品质分析</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-blue-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 26%">
+                <span class="text-white text-xs font-bold">11</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">16.9%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="客户服务">客户服务</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-indigo-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 16%">
+                <span class="text-white text-xs font-bold">7</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">10.8%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="代码编写">代码编写</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-purple-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 14%">
+                <span class="text-white text-xs font-bold">6</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">9.2%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="供应链采购">供应链采购</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-pink-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">3</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">4.6%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="视频剪辑生成">视频剪辑生成</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-red-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">2</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">3.1%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="设计计算">设计计算</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-orange-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">1</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">1.5%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="参数辅助计算">参数辅助计算</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-amber-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">1</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">1.5%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="辅助设计">辅助设计</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-emerald-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">1</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">1.5%</span>
+    </div>
+            </div>
+        </div>
+
+        <div class="section-header">⚡ 效率提升评估</div>
+        <div class="card">
+            <div class="card-title">📊 AI对工作效率的提升程度</div>
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-3 mb-4"><div class="text-center p-3 rounded-lg bg-emerald-50"><div class="text-2xl font-bold text-emerald-700">8</div><div class="text-xs text-gray-500 mt-1">提升非常大（50%+）</div></div><div class="text-center p-3 rounded-lg bg-blue-50"><div class="text-2xl font-bold text-blue-700">13</div><div class="text-xs text-gray-500 mt-1">提升较大（30-50%）</div></div><div class="text-center p-3 rounded-lg bg-yellow-50"><div class="text-2xl font-bold text-yellow-700">33</div><div class="text-xs text-gray-500 mt-1">有一定提升（10-30%）</div></div><div class="text-center p-3 rounded-lg bg-orange-50"><div class="text-2xl font-bold text-orange-700">8</div><div class="text-xs text-gray-500 mt-1">提升不大（<10%）</div></div><div class="text-center p-3 rounded-lg bg-red-50"><div class="text-2xl font-bold text-red-700">3</div><div class="text-xs text-gray-500 mt-1">没什么帮助</div></div><div class="text-center p-3 rounded-lg bg-gray-50"><div class="text-2xl font-bold text-gray-700">0</div><div class="text-xs text-gray-500 mt-1">没用过不清楚</div></div></div>
+            <div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="提升非常大（50%+）">提升非常大（50%+）</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-emerald-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 12%">
+                <span class="text-white text-xs font-bold">8</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">12.3%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="提升较大（30-50%）">提升较大（30-50%）</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-blue-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 20%">
+                <span class="text-white text-xs font-bold">13</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">20.0%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="有一定提升（10-30%）">有一定提升（10-30%）</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-yellow-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 51%">
+                <span class="text-white text-xs font-bold">33</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">50.8%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="提升不大（<10%）">提升不大（<10%）</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-orange-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 12%">
+                <span class="text-white text-xs font-bold">8</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">12.3%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="没什么帮助">没什么帮助</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-red-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">3</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">4.6%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="没用过不清楚">没用过不清楚</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-gray-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">0</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">0.0%</span>
+    </div>
+        </div>
+
+        <div class="section-header">🏛 部门AI成熟度画像</div>
+        <div class="card">
+            <div class="card-title">🗺 各部门AI使用成熟度评分（5分制）</div>
+            <div class="space-y-4"><div class="flex items-center gap-4">
+        <span class="w-24 text-sm text-gray-700 font-medium text-right flex-shrink-0">市场运营部</span>
+        <div class="flex-1"><div class="maturity-bar"><div class="maturity-fill bg-emerald-500" style="width: 80%"></div></div></div>
+        <span class="w-12 text-sm font-bold text-emerald-700">4.0</span>
+        <span class="w-20 text-xs text-gray-400">(7人)</span>
+    </div><div class="flex items-center gap-4">
+        <span class="w-24 text-sm text-gray-700 font-medium text-right flex-shrink-0">技术部</span>
+        <div class="flex-1"><div class="maturity-bar"><div class="maturity-fill bg-emerald-500" style="width: 75%"></div></div></div>
+        <span class="w-12 text-sm font-bold text-emerald-700">3.76</span>
+        <span class="w-20 text-xs text-gray-400">(17人)</span>
+    </div><div class="flex items-center gap-4">
+        <span class="w-24 text-sm text-gray-700 font-medium text-right flex-shrink-0">外贸销售部</span>
+        <div class="flex-1"><div class="maturity-bar"><div class="maturity-fill bg-blue-500" style="width: 68%"></div></div></div>
+        <span class="w-12 text-sm font-bold text-blue-700">3.4</span>
+        <span class="w-20 text-xs text-gray-400">(15人)</span>
+    </div><div class="flex items-center gap-4">
+        <span class="w-24 text-sm text-gray-700 font-medium text-right flex-shrink-0">财务部</span>
+        <div class="flex-1"><div class="maturity-bar"><div class="maturity-fill bg-blue-500" style="width: 65%"></div></div></div>
+        <span class="w-12 text-sm font-bold text-blue-700">3.25</span>
+        <span class="w-20 text-xs text-gray-400">(4人)</span>
+    </div><div class="flex items-center gap-4">
+        <span class="w-24 text-sm text-gray-700 font-medium text-right flex-shrink-0">品质部</span>
+        <div class="flex-1"><div class="maturity-bar"><div class="maturity-fill bg-blue-500" style="width: 64%"></div></div></div>
+        <span class="w-12 text-sm font-bold text-blue-700">3.2</span>
+        <span class="w-20 text-xs text-gray-400">(5人)</span>
+    </div><div class="flex items-center gap-4">
+        <span class="w-24 text-sm text-gray-700 font-medium text-right flex-shrink-0">行政人事部</span>
+        <div class="flex-1"><div class="maturity-bar"><div class="maturity-fill bg-blue-500" style="width: 60%"></div></div></div>
+        <span class="w-12 text-sm font-bold text-blue-700">3.0</span>
+        <span class="w-20 text-xs text-gray-400">(2人)</span>
+    </div><div class="flex items-center gap-4">
+        <span class="w-24 text-sm text-gray-700 font-medium text-right flex-shrink-0">售后部</span>
+        <div class="flex-1"><div class="maturity-bar"><div class="maturity-fill bg-blue-500" style="width: 60%"></div></div></div>
+        <span class="w-12 text-sm font-bold text-blue-700">3.0</span>
+        <span class="w-20 text-xs text-gray-400">(5人)</span>
+    </div><div class="flex items-center gap-4">
+        <span class="w-24 text-sm text-gray-700 font-medium text-right flex-shrink-0">采购部</span>
+        <div class="flex-1"><div class="maturity-bar"><div class="maturity-fill bg-blue-500" style="width: 60%"></div></div></div>
+        <span class="w-12 text-sm font-bold text-blue-700">3.0</span>
+        <span class="w-20 text-xs text-gray-400">(3人)</span>
+    </div><div class="flex items-center gap-4">
+        <span class="w-24 text-sm text-gray-700 font-medium text-right flex-shrink-0">内贸销售部</span>
+        <div class="flex-1"><div class="maturity-bar"><div class="maturity-fill bg-blue-500" style="width: 60%"></div></div></div>
+        <span class="w-12 text-sm font-bold text-blue-700">3.0</span>
+        <span class="w-20 text-xs text-gray-400">(6人)</span>
+    </div><div class="flex items-center gap-4">
+        <span class="w-24 text-sm text-gray-700 font-medium text-right flex-shrink-0">生产部</span>
+        <div class="flex-1"><div class="maturity-bar"><div class="maturity-fill bg-yellow-500" style="width: 40%"></div></div></div>
+        <span class="w-12 text-sm font-bold text-yellow-700">2.0</span>
+        <span class="w-20 text-xs text-gray-400">(1人)</span>
+    </div></div>
+            <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                <span class="tag bg-emerald-100 text-emerald-700">≥3.5 成熟使用</span>
+                <span class="tag bg-blue-100 text-blue-700">2.5-3.5 成长阶段</span>
+                <span class="tag bg-yellow-100 text-yellow-700">1.5-2.5 探索阶段</span>
+                <span class="tag bg-red-100 text-red-700">&lt;1.5 起步阶段</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div class="card"><div class="card-title">内贸销售部 · TOP场景</div><div class="flex flex-wrap gap-1.5"><span class="tag bg-blue-100 text-blue-700">文档翻译 5</span><span class="tag bg-blue-100 text-blue-700">文档写作 3</span><span class="tag bg-blue-100 text-blue-700">文档润色摘要 3</span><span class="tag bg-gray-100 text-gray-600">PPT制作 1</span><span class="tag bg-gray-100 text-gray-600">Excel数据处理 1</span><span class="tag bg-gray-100 text-gray-600">文案创作 1</span></div></div><div class="card"><div class="card-title">品质部 · TOP场景</div><div class="flex flex-wrap gap-1.5"><span class="tag bg-blue-100 text-blue-700">文档写作 4</span><span class="tag bg-blue-100 text-blue-700">文档润色摘要 4</span><span class="tag bg-blue-100 text-blue-700">品质分析 3</span><span class="tag bg-gray-100 text-gray-600">文档翻译 3</span><span class="tag bg-gray-100 text-gray-600">PPT制作 3</span><span class="tag bg-gray-100 text-gray-600">知识问答 3</span></div></div><div class="card"><div class="card-title">售后部 · TOP场景</div><div class="flex flex-wrap gap-1.5"><span class="tag bg-blue-100 text-blue-700">会议纪要 5</span><span class="tag bg-blue-100 text-blue-700">文档写作 4</span><span class="tag bg-blue-100 text-blue-700">PPT制作 4</span><span class="tag bg-gray-100 text-gray-600">文档翻译 3</span><span class="tag bg-gray-100 text-gray-600">知识问答 2</span><span class="tag bg-gray-100 text-gray-600">数据分析统计 2</span></div></div><div class="card"><div class="card-title">外贸销售部 · TOP场景</div><div class="flex flex-wrap gap-1.5"><span class="tag bg-blue-100 text-blue-700">文档润色摘要 15</span><span class="tag bg-blue-100 text-blue-700">文档翻译 13</span><span class="tag bg-blue-100 text-blue-700">文档写作 12</span><span class="tag bg-gray-100 text-gray-600">知识问答 7</span><span class="tag bg-gray-100 text-gray-600">PPT制作 7</span><span class="tag bg-gray-100 text-gray-600">图片生成处理 6</span></div></div><div class="card"><div class="card-title">市场运营部 · TOP场景</div><div class="flex flex-wrap gap-1.5"><span class="tag bg-blue-100 text-blue-700">文档写作 7</span><span class="tag bg-blue-100 text-blue-700">文档翻译 7</span><span class="tag bg-blue-100 text-blue-700">图片生成处理 7</span><span class="tag bg-gray-100 text-gray-600">文档润色摘要 6</span><span class="tag bg-gray-100 text-gray-600">知识问答 6</span><span class="tag bg-gray-100 text-gray-600">PPT制作 6</span></div></div><div class="card"><div class="card-title">技术部 · TOP场景</div><div class="flex flex-wrap gap-1.5"><span class="tag bg-blue-100 text-blue-700">知识问答 10</span><span class="tag bg-blue-100 text-blue-700">文档翻译 9</span><span class="tag bg-blue-100 text-blue-700">图片生成处理 7</span><span class="tag bg-gray-100 text-gray-600">文档写作 6</span><span class="tag bg-gray-100 text-gray-600">数据分析统计 5</span><span class="tag bg-gray-100 text-gray-600">代码编写 5</span></div></div><div class="card"><div class="card-title">生产部 · TOP场景</div><div class="flex flex-wrap gap-1.5"><span class="tag bg-blue-100 text-blue-700">文档写作 1</span><span class="tag bg-blue-100 text-blue-700">文档翻译 1</span><span class="tag bg-blue-100 text-blue-700">图片生成处理 1</span><span class="tag bg-gray-100 text-gray-600">知识问答 1</span><span class="tag bg-gray-100 text-gray-600">品质分析 1</span></div></div><div class="card"><div class="card-title">行政人事部 · TOP场景</div><div class="flex flex-wrap gap-1.5"><span class="tag bg-blue-100 text-blue-700">文档翻译 2</span><span class="tag bg-blue-100 text-blue-700">PPT制作 2</span><span class="tag bg-blue-100 text-blue-700">文档写作 1</span><span class="tag bg-gray-100 text-gray-600">文档润色摘要 1</span><span class="tag bg-gray-100 text-gray-600">数据分析统计 1</span><span class="tag bg-gray-100 text-gray-600">图片生成处理 1</span></div></div><div class="card"><div class="card-title">财务部 · TOP场景</div><div class="flex flex-wrap gap-1.5"><span class="tag bg-blue-100 text-blue-700">文档润色摘要 3</span><span class="tag bg-blue-100 text-blue-700">知识问答 3</span><span class="tag bg-blue-100 text-blue-700">文档写作 2</span><span class="tag bg-gray-100 text-gray-600">Excel数据处理 2</span></div></div><div class="card"><div class="card-title">采购部 · TOP场景</div><div class="flex flex-wrap gap-1.5"><span class="tag bg-blue-100 text-blue-700">知识问答 3</span><span class="tag bg-blue-100 text-blue-700">图片生成处理 2</span><span class="tag bg-blue-100 text-blue-700">品质分析 2</span><span class="tag bg-gray-100 text-gray-600">客户服务 1</span><span class="tag bg-gray-100 text-gray-600">供应链采购 1</span></div></div></div>
+
+        <div class="section-header">🎯 使用障碍与培训需求</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="card">
+                <div class="card-title">🚧 主要使用障碍</div>
+                <div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="结果不准确">结果不准确</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-blue-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 100%">
+                <span class="text-white text-xs font-bold">36</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">55.4%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="费用问题">费用问题</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-indigo-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 64%">
+                <span class="text-white text-xs font-bold">23</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">35.4%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="不会写提示词">不会写提示词</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-purple-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 58%">
+                <span class="text-white text-xs font-bold">21</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">32.3%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="数据安全顾虑">数据安全顾虑</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-pink-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 36%">
+                <span class="text-white text-xs font-bold">13</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">20.0%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="不了解AI能做什么">不了解AI能做什么</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-red-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 19%">
+                <span class="text-white text-xs font-bold">7</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">10.8%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="网络限制">网络限制</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-orange-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 11%">
+                <span class="text-white text-xs font-bold">4</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">6.2%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="语言障碍">语言障碍</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-amber-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">2</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">3.1%</span>
+    </div>
+                <div class="mt-4 p-3 bg-red-50 rounded-lg">
+                    <p class="text-sm text-red-800">⚠️ <strong>结果不准确</strong>是最大障碍(55.4%)，其次是<strong>费用问题</strong>(35.4%)和<strong>不会写提示词</strong>(32.3%)。</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">🎓 培训需求排名</div>
+                <div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="提示词编写技巧">提示词编写技巧</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-blue-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 100%">
+                <span class="text-white text-xs font-bold">34</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">52.3%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="岗位专属场景">岗位专属场景</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-indigo-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 82%">
+                <span class="text-white text-xs font-bold">28</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">43.1%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="Excel数据处理">Excel数据处理</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-purple-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 76%">
+                <span class="text-white text-xs font-bold">26</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">40.0%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="PPT制作">PPT制作</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-pink-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 59%">
+                <span class="text-white text-xs font-bold">20</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">30.8%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="AI基础操作入门">AI基础操作入门</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-red-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 56%">
+                <span class="text-white text-xs font-bold">19</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">29.2%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="文档写作实操">文档写作实操</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-orange-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 53%">
+                <span class="text-white text-xs font-bold">18</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">27.7%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="设计创意应用">设计创意应用</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-amber-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 47%">
+                <span class="text-white text-xs font-bold">16</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">24.6%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="代码技术应用">代码技术应用</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-emerald-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 44%">
+                <span class="text-white text-xs font-bold">15</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">23.1%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="数据安全脱敏">数据安全脱敏</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-teal-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 35%">
+                <span class="text-white text-xs font-bold">12</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">18.5%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="无">无</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-cyan-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">1</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">1.5%</span>
+    </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="card">
+                <div class="card-title">📚 偏好的培训形式</div>
+                <div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="线下集中培训">线下集中培训</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-blue-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 43%">
+                <span class="text-white text-xs font-bold">28</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">43.1%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="图文手册+实操">图文手册+实操</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-indigo-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 22%">
+                <span class="text-white text-xs font-bold">14</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">21.5%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="线上直播培训">线上直播培训</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-purple-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 14%">
+                <span class="text-white text-xs font-bold">9</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">13.8%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="录播视频">录播视频</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-pink-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 12%">
+                <span class="text-white text-xs font-bold">8</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">12.3%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="部门内部分享">部门内部分享</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-red-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">5</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">7.7%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="一对一辅导">一对一辅导</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-orange-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">1</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">1.5%</span>
+    </div>
+            </div>
+            <div class="card">
+                <div class="card-title">⏰ 愿意投入的学习时间</div>
+                <div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="1-3小时">1-3小时</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-blue-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 49%">
+                <span class="text-white text-xs font-bold">32</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">49.2%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="1小时以内">1小时以内</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-indigo-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 22%">
+                <span class="text-white text-xs font-bold">14</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">21.5%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="10小时以上">10小时以上</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-purple-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 18%">
+                <span class="text-white text-xs font-bold">12</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">18.5%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="5-10小时">5-10小时</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-pink-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">4</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">6.2%</span>
+    </div><div class="flex items-center gap-3 mb-2">
+        <span class="text-sm text-gray-600 w-36 text-right flex-shrink-0 truncate" title="3-5小时">3-5小时</span>
+        <div class="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+            <div class="bg-red-500 h-6 rounded-full transition-all duration-500 flex items-center justify-end pr-2" style="width: 8%">
+                <span class="text-white text-xs font-bold">3</span>
+            </div>
+        </div>
+        <span class="text-xs text-gray-400 w-12 flex-shrink-0">4.6%</span>
+    </div>
+                <div class="mt-4 p-3 bg-indigo-50 rounded-lg">
+                    <p class="text-sm text-indigo-800">💡 多数员工倾向 <strong>1-3小时</strong> 的短时培训，建议采用"短频快"的培训模式。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-header">💭 员工心声</div>
+        <div class="card">
+            <div class="card-title">🗣 开放建议汇总（25条）</div>
+            <div class="space-y-2 max-h-96 overflow-y-auto"><div class="sug-card"><div class="text-sm text-gray-700">建议组织相关培训</div><div class="text-xs text-gray-400 mt-1">—— 行政人事部 · LM</div></div><div class="sug-card"><div class="text-sm text-gray-700">不要一次性上线太多种 AI，按岗位筛选 3-5 款核心工具</div><div class="text-xs text-gray-400 mt-1">—— 行政人事部 · 施瑶</div></div><div class="sug-card"><div class="text-sm text-gray-700">拆成文案改写、表格处理、图片文字提取、作业答疑、PPT大纲、短视频脚本等单一小工具。用户按需点开即用，不用学习复杂指令。
+把高频场景做成一键模板：工作总结、电商文案、采购检验标准、品质整改单、亲子辅导话术等。普通人不用学习写提示词，直接填空生成内容。</div><div class="text-xs text-gray-400 mt-1">—— 品质部 · 高望林</div></div><div class="sug-card"><div class="text-sm text-gray-700">很好，可以提高工作效率</div><div class="text-xs text-gray-400 mt-1">—— 售后部 · 匡辉</div></div><div class="sug-card"><div class="text-sm text-gray-700">如果能熟练使用AI工具对平时的工作会有很大帮助</div><div class="text-xs text-gray-400 mt-1">—— 售后部 · 席国栋</div></div><div class="sug-card"><div class="text-sm text-gray-700">公司可以提供平台和资源，对本部门人员提供必要的培训，可以有效提高工作效率</div><div class="text-xs text-gray-400 mt-1">—— 售后部 · 洪奎</div></div><div class="sug-card"><div class="text-sm text-gray-700">非常好</div><div class="text-xs text-gray-400 mt-1">—— 售后部 · 王子威</div></div><div class="sug-card"><div class="text-sm text-gray-700">从业务是实用层面出发，直接解决问题</div><div class="text-xs text-gray-400 mt-1">—— 技术部 · 张立东</div></div><div class="sug-card"><div class="text-sm text-gray-700">暂无，目前AI工具对硬件设计方面没太大的帮助</div><div class="text-xs text-gray-400 mt-1">—— 技术部 · 曾昭理</div></div><div class="sug-card"><div class="text-sm text-gray-700">有利于提升工作效率和产出好的设计方案</div><div class="text-xs text-gray-400 mt-1">—— 技术部 · 杨才</div></div><div class="sug-card"><div class="text-sm text-gray-700">建议分岗位定制实操课程，按需定制课程。</div><div class="text-xs text-gray-400 mt-1">—— 技术部 · 艾玲</div></div><div class="sug-card"><div class="text-sm text-gray-700">在工作中结合AI是一个渐进探索的过程，需要一定的试错过程，耗费TOKEN偏多，使用费用偏高，这一部分相当阻碍了AI在工作中的使用深度</div><div class="text-xs text-gray-400 mt-1">—— 技术部 · 陈熠</div></div><div class="sug-card"><div class="text-sm text-gray-700">可以为每个岗位推广适合的AI软件，提高工作效率</div><div class="text-xs text-gray-400 mt-1">—— 技术部 · 周勇</div></div><div class="sug-card"><div class="text-sm text-gray-700">根据业务场景需求，进行分析指导如何使用，并有一定的思考能力</div><div class="text-xs text-gray-400 mt-1">—— 技术部 · 李保志</div></div><div class="sug-card"><div class="text-sm text-gray-700">可以全员都安排学习，包括生产正式员工，提升他们的思维能力，多用脑</div><div class="text-xs text-gray-400 mt-1">—— 生产部 · 柯江</div></div><div class="sug-card"><div class="text-sm text-gray-700">适量使用AI，避免文件过多，应言简意赅
+提升使用感，能落地为主</div><div class="text-xs text-gray-400 mt-1">—— 财务部 · 魏晴雯</div></div><div class="sug-card"><div class="text-sm text-gray-700">岗位技能针对性培训</div><div class="text-xs text-gray-400 mt-1">—— 采购部 · 郑琴</div></div><div class="sug-card"><div class="text-sm text-gray-700">赞成，AI能高效处理采购单据整理、报价对比、供应商资料汇总等</div><div class="text-xs text-gray-400 mt-1">—— 采购部 · 陈静</div></div><div class="sug-card"><div class="text-sm text-gray-700">ai是时代发展的方向，多学习不仅可以提升技能储备，还可以让工作更加便捷。</div><div class="text-xs text-gray-400 mt-1">—— 内贸销售部 · 李清云</div></div><div class="sug-card"><div class="text-sm text-gray-700">高效工作，很有必要</div><div class="text-xs text-gray-400 mt-1">—— 内贸销售部 · 祁梦甜</div></div><div class="sug-card"><div class="text-sm text-gray-700">建议公司进行AI相关培训</div><div class="text-xs text-gray-400 mt-1">—— 外贸销售部 · Ellen</div></div><div class="sug-card"><div class="text-sm text-gray-700">希望能够学习每个 AI 工具的功能属性，并能实操到工作当中</div><div class="text-xs text-gray-400 mt-1">—— 外贸销售部 · 杨静</div></div><div class="sug-card"><div class="text-sm text-gray-700">希望能够帮我们更加了解这些AI工具，这样能够更加高效的运用到工作中去，提高工作效率</div><div class="text-xs text-gray-400 mt-1">—— 外贸销售部 · 赵梦</div></div><div class="sug-card"><div class="text-sm text-gray-700">自助学习+公司培训</div><div class="text-xs text-gray-400 mt-1">—— 市场运营部 · 李金奎</div></div><div class="sug-card"><div class="text-sm text-gray-700">很好</div><div class="text-xs text-gray-400 mt-1">—— 市场运营部 · 黄鋆鑫</div></div></div>
+        </div>
+
+        <!-- ==================== 方案部分 ==================== -->
+        <div class="section-header">📋 AI培训与引入方案建议</div>
+
+        <div class="card mb-6">
+            <div class="card-title">🔍 现状诊断</div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-emerald-50 rounded-lg p-4">
+                    <h4 class="font-bold text-emerald-800 mb-2">✅ 优势</h4>
+                    <ul class="text-sm text-emerald-700 space-y-1">
+                        <li>• AI工具渗透率较高，98.5%的员工已尝试或使用AI</li>
+                        <li>• 50.8%的员工每天使用AI，使用习惯已形成</li>
+                        <li>• 豆包(59人)和ChatGPT(27人)为主要工具</li>
+                        <li>• 文档翻译/写作/润色等场景需求明确</li>
+                    </ul>
+                </div>
+                <div class="bg-amber-50 rounded-lg p-4">
+                    <h4 class="font-bold text-amber-800 mb-2">⚠️ 短板</h4>
+                    <ul class="text-sm text-amber-700 space-y-1">
+                        <li>• 52.3%仅"偶尔使用"，停留在浅层应用</li>
+                        <li>• 55.4%反馈AI输出不准确</li>
+                        <li>• 32.3%不会写提示词</li>
+                        <li>• 工具分散，缺少统一标准和规范</li>
+                    </ul>
+                </div>
+                <div class="bg-red-50 rounded-lg p-4">
+                    <h4 class="font-bold text-red-800 mb-2">🚨 风险</h4>
+                    <ul class="text-sm text-red-700 space-y-1">
+                        <li>• 20.0%担心数据安全</li>
+                        <li>• 35.4%反映工具付费问题</li>
+                        <li>• 缺少AI使用规范和数据脱敏指引</li>
+                        <li>• 各部门AI成熟度差异大（最高4.0分 vs 最低2.0分）</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-6">
+            <div class="card-title">🎯 分层培训方案（三阶九步法）</div>
+            <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead>
+                    <tr class="bg-gray-50">
+                        <th class="p-3 text-left font-bold text-gray-700 w-20">阶段</th>
+                        <th class="p-3 text-left font-bold text-gray-700 w-32">目标人群</th>
+                        <th class="p-3 text-left font-bold text-gray-700">培训内容</th>
+                        <th class="p-3 text-left font-bold text-gray-700 w-24">形式</th>
+                        <th class="p-3 text-left font-bold text-gray-700 w-20">时长</th>
+                        <th class="p-3 text-left font-bold text-gray-700 w-24">预期效果</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-b border-gray-100">
+                        <td class="p-3"><span class="tag bg-red-100 text-red-700">第一阶</span><br><strong>入门普及</strong></td>
+                        <td class="p-3">完全不了解 / 听说过 / 尝试过<br><span class="text-xs text-gray-400">(3人)</span></td>
+                        <td class="p-3">
+                            1️⃣ AI工具概览：什么是AI、能做什么、主流工具对比<br>
+                            2️⃣ 基础操作入门：注册、界面、基础对话<br>
+                            3️⃣ 提示词入门：角色-任务-要求三段式
+                        </td>
+                        <td class="p-3">线下集中培训</td>
+                        <td class="p-3">2-3小时</td>
+                        <td class="p-3">全员能独立使用AI完成简单任务</td>
+                    </tr>
+                    <tr class="border-b border-gray-100">
+                        <td class="p-3"><span class="tag bg-blue-100 text-blue-700">第二阶</span><br><strong>场景深化</strong></td>
+                        <td class="p-3">偶尔使用者<br><span class="text-xs text-gray-400">(34人)</span></td>
+                        <td class="p-3">
+                            4️⃣ 提示词进阶：多轮对话、思维链、模板库<br>
+                            5️⃣ 文档写作实操：邮件/报告/方案/翻译<br>
+                            6️⃣ Excel+AI实操：数据清洗、公式生成、分析
+                        </td>
+                        <td class="p-3">线下集中培训 + 图文手册</td>
+                        <td class="p-3">3-5小时</td>
+                        <td class="p-3">能用AI提效30%+，掌握岗位场景</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3"><span class="tag bg-emerald-100 text-emerald-700">第三阶</span><br><strong>岗位精通</strong></td>
+                        <td class="p-3">经常使用 / 非常熟练<br><span class="text-xs text-gray-400">(28人)</span></td>
+                        <td class="p-3">
+                            7️⃣ 岗位专属场景：各部门定制化AI工作流<br>
+                            8️⃣ 数据安全脱敏：合规使用、数据分类<br>
+                            9️⃣ AI+自动化：Coze工作流、API集成
+                        </td>
+                        <td class="p-3">部门分享 + 一对一辅导</td>
+                        <td class="p-3">5-10小时</td>
+                        <td class="p-3">能构建AI工作流，提效50%+</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+        <div class="card mb-6">
+            <div class="card-title">🏢 部门定制化AI引入方案</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div class="bg-emerald-50 rounded-lg p-4">
+        <div class="flex items-center gap-2 mb-2">
+            <span class="text-xl">💻</span>
+            <strong class="text-gray-800">技术部</strong>
+            <span class="tag bg-emerald-100 text-emerald-700">成熟度 3.76/5</span>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">🎯 重点场景：代码辅助、技术文档、AI编程工具链</div>
+        <div class="text-xs text-gray-500 mb-2">🔧 推荐工具：DeepSeek/Cursor/ChatGPT</div>
+        <ul class="text-sm text-gray-700 space-y-1"><li>• 引入Cursor+DeepSeek编程工具链</li><li>• 建立代码审查AI辅助流程</li><li>• 技术文档AI自动生成规范</li><li>• API安全调用培训</li></ul>
+    </div><div class="bg-blue-50 rounded-lg p-4">
+        <div class="flex items-center gap-2 mb-2">
+            <span class="text-xl">🌍</span>
+            <strong class="text-gray-800">外贸销售部</strong>
+            <span class="tag bg-blue-100 text-blue-700">成熟度 3.4/5</span>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">🎯 重点场景：邮件翻译、客户沟通、市场分析</div>
+        <div class="text-xs text-gray-500 mb-2">🔧 推荐工具：ChatGPT/DeepSeek/Kimi</div>
+        <ul class="text-sm text-gray-700 space-y-1"><li>• 标准化外贸邮件AI模板库</li><li>• 客户询盘AI智能回复流程</li><li>• 多语言翻译+润色工作流</li><li>• 竞品分析AI辅助</li></ul>
+    </div><div class="bg-emerald-50 rounded-lg p-4">
+        <div class="flex items-center gap-2 mb-2">
+            <span class="text-xl">📢</span>
+            <strong class="text-gray-800">市场运营部</strong>
+            <span class="tag bg-emerald-100 text-emerald-700">成熟度 4.0/5</span>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">🎯 重点场景：文案创作、图片生成、数据分析</div>
+        <div class="text-xs text-gray-500 mb-2">🔧 推荐工具：豆包/Kimi/Midjourney</div>
+        <ul class="text-sm text-gray-700 space-y-1"><li>• 营销文案AI批量生成</li><li>• 社媒图片AI生成流程</li><li>• 数据报表AI自动化</li><li>• 竞品监控AI工作流</li></ul>
+    </div><div class="bg-blue-50 rounded-lg p-4">
+        <div class="flex items-center gap-2 mb-2">
+            <span class="text-xl">🏪</span>
+            <strong class="text-gray-800">内贸销售部</strong>
+            <span class="tag bg-blue-100 text-blue-700">成熟度 3.0/5</span>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">🎯 重点场景：客户管理、报价方案、售后跟进</div>
+        <div class="text-xs text-gray-500 mb-2">🔧 推荐工具：豆包/Kimi/文心一言</div>
+        <ul class="text-sm text-gray-700 space-y-1"><li>• 客户沟通话术AI优化</li><li>• 报价方案AI辅助生成</li><li>• 销售数据分析AI化</li><li>• 客户需求AI预判</li></ul>
+    </div><div class="bg-blue-50 rounded-lg p-4">
+        <div class="flex items-center gap-2 mb-2">
+            <span class="text-xl">🔍</span>
+            <strong class="text-gray-800">品质部</strong>
+            <span class="tag bg-blue-100 text-blue-700">成熟度 3.2/5</span>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">🎯 重点场景：品质分析、报告生成、数据统计</div>
+        <div class="text-xs text-gray-500 mb-2">🔧 推荐工具：豆包/DeepSeek/ChatGPT</div>
+        <ul class="text-sm text-gray-700 space-y-1"><li>• 品质数据AI统计分析</li><li>• 异常报告AI自动生成</li><li>• 8D报告AI辅助编写</li><li>• 检测标准AI查询</li></ul>
+    </div><div class="bg-blue-50 rounded-lg p-4">
+        <div class="flex items-center gap-2 mb-2">
+            <span class="text-xl">🔧</span>
+            <strong class="text-gray-800">售后部</strong>
+            <span class="tag bg-blue-100 text-blue-700">成熟度 3.0/5</span>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">🎯 重点场景：客户服务、问题诊断、回复模板</div>
+        <div class="text-xs text-gray-500 mb-2">🔧 推荐工具：豆包/Kimi/WPS AI</div>
+        <ul class="text-sm text-gray-700 space-y-1"><li>• 售后回复AI模板库</li><li>• 故障诊断AI辅助</li><li>• 客户投诉AI分析归类</li><li>• 售后知识库AI问答</li></ul>
+    </div><div class="bg-blue-50 rounded-lg p-4">
+        <div class="flex items-center gap-2 mb-2">
+            <span class="text-xl">💰</span>
+            <strong class="text-gray-800">财务部</strong>
+            <span class="tag bg-blue-100 text-blue-700">成熟度 3.25/5</span>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">🎯 重点场景：报表分析、数据处理、合规审核</div>
+        <div class="text-xs text-gray-500 mb-2">🔧 推荐工具：WPS AI/Claude/DeepSeek</div>
+        <ul class="text-sm text-gray-700 space-y-1"><li>• 财务报表AI分析解读</li><li>• 数据脱敏规范培训（高优先）</li><li>• Excel公式AI生成</li><li>• 审计辅助AI工具</li></ul>
+    </div><div class="bg-blue-50 rounded-lg p-4">
+        <div class="flex items-center gap-2 mb-2">
+            <span class="text-xl">📦</span>
+            <strong class="text-gray-800">采购部</strong>
+            <span class="tag bg-blue-100 text-blue-700">成熟度 3.0/5</span>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">🎯 重点场景：供应商对比、采购分析、合同审核</div>
+        <div class="text-xs text-gray-500 mb-2">🔧 推荐工具：豆包/Kimi/DeepSeek</div>
+        <ul class="text-sm text-gray-700 space-y-1"><li>• 供应商信息AI对比分析</li><li>• 采购合同AI审核</li><li>• 价格趋势AI预测</li><li>• 采购数据AI汇总</li></ul>
+    </div><div class="bg-blue-50 rounded-lg p-4">
+        <div class="flex items-center gap-2 mb-2">
+            <span class="text-xl">👥</span>
+            <strong class="text-gray-800">行政人事部</strong>
+            <span class="tag bg-blue-100 text-blue-700">成熟度 3.0/5</span>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">🎯 重点场景：公文写作、招聘筛选、培训管理</div>
+        <div class="text-xs text-gray-500 mb-2">🔧 推荐工具：豆包/WPS AI/Kimi</div>
+        <ul class="text-sm text-gray-700 space-y-1"><li>• 公文/通知AI写作模板</li><li>• 招聘JD+面试题AI生成</li><li>• 培训方案AI辅助设计</li><li>• 员工满意度AI分析</li></ul>
+    </div><div class="bg-yellow-50 rounded-lg p-4">
+        <div class="flex items-center gap-2 mb-2">
+            <span class="text-xl">🏭</span>
+            <strong class="text-gray-800">生产部</strong>
+            <span class="tag bg-yellow-100 text-yellow-700">成熟度 2.0/5</span>
+        </div>
+        <div class="text-xs text-gray-500 mb-2">🎯 重点场景：生产排程、质量管理、设备维护</div>
+        <div class="text-xs text-gray-500 mb-2">🔧 推荐工具：豆包/DeepSeek</div>
+        <ul class="text-sm text-gray-700 space-y-1"><li>• 生产数据AI分析</li><li>• 排产计划AI辅助</li><li>• 设备维护AI预警</li><li>• 工艺参数AI优化</li></ul>
+    </div></div>
+        </div>
+
+        <div class="card mb-6">
+            <div class="card-title">🗓 实施路线图（6个月计划）</div>
+            <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead>
+                    <tr class="bg-gray-50">
+                        <th class="p-3 text-left font-bold text-gray-700 w-24">时间</th>
+                        <th class="p-3 text-left font-bold text-gray-700">核心任务</th>
+                        <th class="p-3 text-left font-bold text-gray-700 w-32">交付物</th>
+                        <th class="p-3 text-left font-bold text-gray-700 w-24">负责人</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-b border-gray-100">
+                        <td class="p-3"><span class="tag bg-red-100 text-red-700">第1月</span></td>
+                        <td class="p-3"><strong>基建期</strong><br>• 制定AI使用规范和数据安全制度<br>• 采购/统一AI工具账号（建议：豆包企业版+DeepSeek）<br>• 建立AI工具使用内部平台/导航页</td>
+                        <td class="p-3">AI使用规范、工具账号、导航页</td>
+                        <td class="p-3">IT部+行政</td>
+                    </tr>
+                    <tr class="border-b border-gray-100">
+                        <td class="p-3"><span class="tag bg-orange-100 text-orange-700">第2月</span></td>
+                        <td class="p-3"><strong>普及期</strong><br>• 第一阶培训：全员AI入门（线下2场）<br>• 制作AI基础操作图文手册<br>• 建立内部AI交流群</td>
+                        <td class="p-3">培训课件、操作手册、交流群</td>
+                        <td class="p-3">培训组</td>
+                    </tr>
+                    <tr class="border-b border-gray-100">
+                        <td class="p-3"><span class="tag bg-yellow-100 text-yellow-700">第3月</span></td>
+                        <td class="p-3"><strong>深化期</strong><br>• 第二阶培训：场景实操（按部门分3-4场）<br>• 提示词模板库建设<br>• 部门AI Champion选拔</td>
+                        <td class="p-3">场景培训、模板库、Champion名单</td>
+                        <td class="p-3">培训组+各部门</td>
+                    </tr>
+                    <tr class="border-b border-gray-100">
+                        <td class="p-3"><span class="tag bg-green-100 text-green-700">第4月</span></td>
+                        <td class="p-3"><strong>定制期</strong><br>• 第三阶培训：岗位专属AI工作流<br>• 各部门定制AI应用方案落地<br>• 数据脱敏专项培训</td>
+                        <td class="p-3">部门AI方案、脱敏指引</td>
+                        <td class="p-3">各部门Champion</td>
+                    </tr>
+                    <tr class="border-b border-gray-100">
+                        <td class="p-3"><span class="tag bg-blue-100 text-blue-700">第5月</span></td>
+                        <td class="p-3"><strong>优化期</strong><br>• AI使用效果评估问卷<br>• 优秀案例收集与分享会<br>• 工具链优化与成本控制</td>
+                        <td class="p-3">效果报告、案例集</td>
+                        <td class="p-3">培训组+IT部</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3"><span class="tag bg-purple-100 text-purple-700">第6月</span></td>
+                        <td class="p-3"><strong>常态化</strong><br>• 建立AI使用月度分享机制<br>• 新员工AI入职培训模块<br>• AI工具年度预算规划<br>• 二次调研评估整体提升</td>
+                        <td class="p-3">常态机制、预算规划、二次调研</td>
+                        <td class="p-3">行政+IT部</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+        <div class="card mb-6">
+            <div class="card-title">🔑 关键建议与优先行动</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-red-50 rounded-lg p-4 border-l-4 border-red-400">
+                    <h4 class="font-bold text-red-800 mb-2">🔴 紧急（1个月内）</h4>
+                    <ul class="text-sm text-red-700 space-y-1.5">
+                        <li>1. <strong>统一AI工具账号</strong>：解决35.4%员工反映的付费问题</li>
+                        <li>2. <strong>发布数据安全规范</strong>：明确哪些数据可用AI处理，哪些禁止</li>
+                        <li>3. <strong>建立提示词模板库</strong>：针对高频场景（翻译/写作/润色）提供标准模板</li>
+                    </ul>
+                </div>
+                <div class="bg-amber-50 rounded-lg p-4 border-l-4 border-amber-400">
+                    <h4 class="font-bold text-amber-800 mb-2">🟡 重要（2-3个月内）</h4>
+                    <ul class="text-sm text-amber-700 space-y-1.5">
+                        <li>1. <strong>分部门场景化培训</strong>：重点覆盖技术部(17人)和外贸部(15人)</li>
+                        <li>2. <strong>选拔部门AI Champion</strong>：每个部门1-2名，负责内部分享和答疑</li>
+                        <li>3. <strong>建设内部AI知识库</strong>：沉淀提示词、案例、FAQ</li>
+                    </ul>
+                </div>
+                <div class="bg-blue-50 rounded-lg p-4 border-l-4 border-blue-400">
+                    <h4 class="font-bold text-blue-800 mb-2">🔵 中期（4-6个月）</h4>
+                    <ul class="text-sm text-blue-700 space-y-1.5">
+                        <li>1. <strong>AI+自动化工作流</strong>：引入Coze/扣子构建自动化流程</li>
+                        <li>2. <strong>效果量化追踪</strong>：建立AI使用效率度量指标</li>
+                        <li>3. <strong>供应商谈判</strong>：争取企业级AI工具批量优惠</li>
+                    </ul>
+                </div>
+                <div class="bg-emerald-50 rounded-lg p-4 border-l-4 border-emerald-400">
+                    <h4 class="font-bold text-emerald-800 mb-2">🟢 长期（6个月+）</h4>
+                    <ul class="text-sm text-emerald-700 space-y-1.5">
+                        <li>1. <strong>AI赋能业务创新</strong>：探索AI驱动的新业务模式</li>
+                        <li>2. <strong>AI文化建设</strong>：AI-first工作思维融入企业文化</li>
+                        <li>3. <strong>持续学习机制</strong>：月度AI分享会、季度评估</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-6">
+            <div class="card-title">💰 AI工具引入预算参考</div>
+            <table class="w-full text-sm">
+                <thead>
+                    <tr class="bg-gray-50">
+                        <th class="p-3 text-left font-bold text-gray-700">工具</th>
+                        <th class="p-3 text-left font-bold text-gray-700">用途</th>
+                        <th class="p-3 text-left font-bold text-gray-700">月费/人</th>
+                        <th class="p-3 text-left font-bold text-gray-700">建议覆盖</th>
+                        <th class="p-3 text-left font-bold text-gray-700">月度预算</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-b border-gray-100">
+                        <td class="p-3"><strong>豆包企业版</strong></td>
+                        <td class="p-3">全员通用：写作、翻译、问答</td>
+                        <td class="p-3">约 ¥30-50</td>
+                        <td class="p-3">全公司（65+人）</td>
+                        <td class="p-3">¥2,000-3,500</td>
+                    </tr>
+                    <tr class="border-b border-gray-100">
+                        <td class="p-3"><strong>DeepSeek API</strong></td>
+                        <td class="p-3">技术部：编程、数据分析</td>
+                        <td class="p-3">按量计费</td>
+                        <td class="p-3">技术部（17人）</td>
+                        <td class="p-3">¥500-1,000</td>
+                    </tr>
+                    <tr class="border-b border-gray-100">
+                        <td class="p-3"><strong>WPS AI</strong></td>
+                        <td class="p-3">文档、表格、演示</td>
+                        <td class="p-3">约 ¥20-30</td>
+                        <td class="p-3">办公室（65人）</td>
+                        <td class="p-3">¥1,300-2,000</td>
+                    </tr>
+                    <tr>
+                        <td class="p-3"><strong>Kimi</strong></td>
+                        <td class="p-3">长文档分析、信息检索</td>
+                        <td class="p-3">免费/¥30</td>
+                        <td class="p-3">销售、市场（28人）</td>
+                        <td class="p-3">¥0-800</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="mt-4 p-3 bg-purple-50 rounded-lg">
+                <p class="text-sm text-purple-800">💡 建议月度AI工具预算 <strong>¥4,000-8,000</strong>，可根据实际使用情况逐步扩容。优先解决员工自费问题，提升使用积极性。</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="bg-gray-800 text-gray-400 text-center py-6 text-sm">
+        <p>AI工具使用情况调研 · 综合看板 · 2026年6月</p>
+        <p class="mt-1">基于65份有效问卷数据生成</p>
+    </div>
+</body>
+</html>
