@@ -1,0 +1,576 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Windows WSL 安装 Hermes Agent 完整指南 | Darren.X</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1627178711416">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Windows WSL 安装 Hermes Agent 完整指南 | Darren.X - Atom Feed" href="/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="在 Windows 系统上开启 WSL 子系统并使用官方一键安装脚本安装 Hermes Agent 的完整教程" />
+    <meta name="keywords" content="Windows,WSL,Hermes Agent,AI Agent,安装教程" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="">
+  <img class="avatar" src="/images/avatar.png?v=1627178711416" alt="">
+  </a>
+  <h1 class="site-title">
+    Darren.X
+  </h1>
+  <p class="site-description">
+    给岁月以文明，而不是给文明以岁月 - 刘慈欣
+  </p>
+  <div class="menu-container">
+    
+      
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+    
+      
+        <a href="/tag/maker" class="menu">
+          玩物
+        </a>
+      
+    
+      
+    
+      
+        <a href="/tag/coding" class="menu">
+          代码
+        </a>
+      
+    
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/DarrenHost" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-content-container">
+          
+
+<article class="post">
+  <div class="post-header">
+    <h1 class="post-title">Windows WSL 安装 Hermes Agent 完整指南</h1>
+  </div>
+  <div class="post-info">
+    <span>
+      2026-07-02
+    </span>
+    <span>
+      10 min read
+    </span>
+    
+      <a href="/tag/coding/" class="post-tag">
+        # 代码
+      </a>
+    
+      <a href="/tag/hermes/" class="post-tag">
+        # Hermes
+      </a>
+    
+      <a href="/tag/windows/" class="post-tag">
+        # Windows
+      </a>
+    
+      <a href="/tag/wsl/" class="post-tag">
+        # WSL
+      </a>
+    
+  </div>
+      <div class="post-content">
+    <p>本文详细介绍如何在 Windows 系统上开启 WSL (Windows Subsystem for Linux) 子系统，并使用官方一键安装脚本安装 Hermes Agent，让你在 Windows 环境下也能享受 Linux 的强大功能。</p>
+
+<h2 id="为什么选择-wsl">为什么选择 WSL？</h2>
+<p>Hermes Agent 是一个强大的 AI 代理框架，原生支持 Linux 和 macOS 环境。虽然 Windows 也可以运行，但使用 WSL 有以下优势：</p>
+<ul>
+<li>完整的 Linux 环境支持，兼容性更好</li>
+<li>可以使用 Linux 特有的工具和命令</li>
+<li>性能更优，特别是在处理文件系统和网络操作时</li>
+<li>与 Windows 文件系统无缝集成</li>
+<li>官方推荐在 Windows 上使用 WSL2</li>
+</ul>
+
+<h2 id="系统要求">系统要求</h2>
+<ul>
+<li><strong>Windows 版本</strong>：Windows 10 版本 2004 及以上（内部版本 19041 及以上）或 Windows 11</li>
+<li><strong>内存</strong>：至少 8GB RAM（推荐 16GB）</li>
+<li><strong>磁盘空间</strong>：至少 10GB 可用空间</li>
+<li><strong>CPU</strong>：支持虚拟化（BIOS 中开启 VT-x/AMD-V）</li>
+</ul>
+
+<h2 id="第一步-开启-wsl-功能">第一步：开启 WSL 功能</h2>
+
+<h3 id="11-通过-windows-功能开启">1.1 通过 Windows 功能开启</h3>
+<ol>
+<li>右键点击"开始"菜单，选择"Windows PowerShell (管理员)"或"终端(管理员)"</li>
+<li>执行以下命令启用 WSL 功能：</li>
+</ol>
+<pre><code class="language-powershell"># 启用 WSL 功能
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+
+# 启用虚拟机平台
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+</code></pre>
+
+<ol start="3">
+<li>重启计算机</li>
+</ol>
+
+<h3 id="12-安装-wsl2-内核更新">1.2 安装 WSL2 内核更新</h3>
+<ol>
+<li>下载 WSL2 Linux 内核更新包：<a href="https://aka.ms/wsl2kernel" target="_blank">https://aka.ms/wsl2kernel</a></li>
+<li>运行下载的安装程序</li>
+<li>设置 WSL2 为默认版本：</li>
+</ol>
+<pre><code class="language-powershell">wsl --set-default-version 2
+</code></pre>
+
+<h3 id="13-安装-linux-发行版">1.3 安装 Linux 发行版</h3>
+<p>从 Microsoft Store 安装你喜欢的 Linux 发行版，推荐以下选择：</p>
+<ul>
+<li><strong>Ubuntu 22.04 LTS</strong>（推荐，兼容性最好）</li>
+<li>Ubuntu 20.04 LTS</li>
+<li>Debian GNU/Linux</li>
+</ul>
+
+<p>或者通过命令行安装：</p>
+<pre><code class="language-powershell"># 查看可用的发行版
+wsl --list --online
+
+# 安装 Ubuntu 22.04
+wsl --install -d Ubuntu-22.04
+</code></pre>
+
+<p>安装完成后，启动 Ubuntu，设置用户名和密码。</p>
+
+<h2 id="第二步-配置-wsl-环境">第二步：配置 WSL 环境</h2>
+
+<h3 id="21-更新系统包">2.1 更新系统包</h3>
+<pre><code class="language-bash"># 更新包列表
+sudo apt update
+
+# 升级已安装的包
+sudo apt upgrade -y
+
+# 安装基础工具
+sudo apt install -y build-essential curl wget git vim
+</code></pre>
+
+<h3 id="22-配置-windows-终端可选">2.2 配置 Windows 终端（可选）</h3>
+<p>推荐使用 Windows Terminal 来获得更好的终端体验：</p>
+<ol>
+<li>从 Microsoft Store 安装 Windows Terminal</li>
+<li>打开 Windows Terminal，默认会检测到 WSL 发行版</li>
+<li>可以设置 Ubuntu 为默认配置文件</li>
+</ol>
+
+<h3 id="23-配置-vs-code-集成可选">2.3 配置 VS Code 集成（可选）</h3>
+<ol>
+<li>安装 VS Code</li>
+<li>安装 "Remote - WSL" 扩展</li>
+<li>在 WSL 终端中运行 <code>code .</code> 即可在 VS Code 中打开当前目录</li>
+</ol>
+
+<h2 id="第三步-安装-hermes-agent">第三步：安装 Hermes Agent</h2>
+
+<h3 id="31-使用官方一键安装脚本">3.1 使用官方一键安装脚本</h3>
+<p>Hermes Agent 提供了官方一键安装脚本，这是最简单快捷的安装方式：</p>
+
+<pre><code class="language-bash"># 下载并运行官方安装脚本
+curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
+</code></pre>
+
+<p>安装脚本会自动完成以下操作：</p>
+<ul>
+<li>检测系统环境</li>
+<li>安装必要的依赖</li>
+<li>下载 Hermes Agent 源码</li>
+<li>创建虚拟环境</li>
+<li>安装 Python 依赖</li>
+<li>配置环境变量</li>
+</ul>
+
+<h3 id="32-验证安装">3.2 验证安装</h3>
+<pre><code class="language-bash"># 检查 Hermes 版本
+hermes --version
+
+# 查看帮助信息
+hermes --help
+
+# 运行健康检查
+hermes doctor
+</code></pre>
+
+<h3 id="33-初始化配置">3.3 初始化配置</h3>
+<pre><code class="language-bash"># 运行交互式设置向导
+hermes setup
+
+# 或者分步配置
+hermes setup model      # 配置模型
+hermes setup terminal   # 配置终端
+hermes setup gateway    # 配置消息网关
+</code></pre>
+
+<h3 id="34-配置-api-密钥">3.4 配置 API 密钥</h3>
+<pre><code class="language-bash"># 编辑环境变量文件
+hermes config env-path
+
+# 添加 API 密钥（示例）
+echo "ANTHROPIC_API_KEY=your_api_key_here" >> ~/.hermes/.env
+echo "OPENAI_API_KEY=your_openai_key_here" >> ~/.hermes/.env
+</code></pre>
+
+<h2 id="第四步-启动和使用">第四步：启动和使用</h2>
+
+<h3 id="41-启动交互式会话">4.1 启动交互式会话</h3>
+<pre><code class="language-bash"># 启动 Hermes Agent 交互模式
+hermes
+
+# 或者直接提问
+hermes -q "你好，请介绍一下你自己"
+</code></pre>
+
+<h3 id="42-启动消息网关">4.2 启动消息网关</h3>
+<pre><code class="language-bash"># 配置消息平台（Telegram、Discord 等）
+hermes gateway setup
+
+# 安装为系统服务
+hermes gateway install
+
+# 启动网关
+hermes gateway start
+
+# 查看状态
+hermes gateway status
+</code></pre>
+
+<h3 id="43-常用命令">4.3 常用命令</h3>
+<pre><code class="language-bash"># 查看配置
+hermes config
+
+# 管理工具
+hermes tools
+
+# 管理技能
+hermes skills list
+
+# 查看会话
+hermes sessions list
+
+# 更新 Hermes
+hermes update
+</code></pre>
+
+<h2 id="常见问题与解决方案">常见问题与解决方案</h2>
+
+<h3 id="问题-1-wsl-安装失败">问题 1: WSL 安装失败</h3>
+<p><strong>症状</strong>：安装过程中出现错误提示</p>
+<p><strong>解决方案</strong>：</p>
+<pre><code class="language-powershell"># 检查虚拟化是否开启
+# 在任务管理器 -> 性能 -> CPU 中查看"虚拟化"是否已启用
+
+# 如果未启用，需要在 BIOS 中开启
+# 重启电脑，进入 BIOS 设置
+# 找到 Intel VT-x 或 AMD-V 选项并启用
+
+# 重新安装 WSL
+wsl --install
+</code></pre>
+
+<h3 id="问题-2-内存不足">问题 2: 内存不足</h3>
+<p><strong>症状</strong>：WSL 运行缓慢或崩溃</p>
+<p><strong>解决方案</strong>：创建 <code>.wslconfig</code> 文件限制 WSL 资源使用</p>
+<pre><code class="language-ini"># 在 Windows 用户目录下创建 .wslconfig 文件
+# C:\Users\YourUsername\.wslconfig
+
+[wsl2]
+memory=8GB           # 限制 WSL 最大内存
+processors=4         # 限制 CPU 核心数
+swap=4GB             # 交换空间大小
+</code></pre>
+
+<h3 id="问题-3-hermes-命令找不到">问题 3: Hermes 命令找不到</h3>
+<p><strong>症状</strong>：运行 <code>hermes</code> 命令提示 "command not found"</p>
+<p><strong>解决方案</strong>：</p>
+<pre><code class="language-bash"># 检查安装路径
+ls -la ~/.hermes/
+
+# 重新加载环境变量
+source ~/.bashrc
+
+# 或者手动添加到 PATH
+export PATH="$HOME/.hermes/bin:$PATH"
+
+# 永久添加到 .bashrc
+echo 'export PATH="$HOME/.hermes/bin:$PATH"' >> ~/.bashrc
+</code></pre>
+
+<h3 id="问题-4-api-密钥配置失败">问题 4: API 密钥配置失败</h3>
+<p><strong>症状</strong>：Hermes 无法连接到 AI 模型</p>
+<p><strong>解决方案</strong>：</p>
+<pre><code class="language-bash"># 检查 .env 文件
+cat ~/.hermes/.env
+
+# 重新配置
+hermes auth add anthropic
+hermes auth add openai
+
+# 验证配置
+hermes doctor
+</code></pre>
+
+<h3 id="问题-5-wsl-与-windows-文件访问">问题 5: WSL 与 Windows 文件访问</h3>
+<p><strong>症状</strong>：在 WSL 中访问 Windows 文件很慢</p>
+<p><strong>解决方案</strong>：</p>
+<pre><code class="language-bash"># Windows 文件在 WSL 中挂载在 /mnt/ 下
+# 例如：C:\Users 对应 /mnt/c/Users
+
+# 建议将项目文件放在 WSL 文件系统中
+# 例如：~/projects/ 而不是 /mnt/c/Users/.../projects/
+
+# 访问 Windows 文件
+cd /mnt/c/Users/YourUsername/Documents
+
+# 访问 WSL 文件（从 Windows）
+# 在资源管理器地址栏输入：\\wsl$\Ubuntu-22.04\home\yourusername
+</code></pre>
+
+<h2 id="性能优化建议">性能优化建议</h2>
+
+<h3 id="1-使用-wsl2-而不是-wsl1">1. 使用 WSL2 而不是 WSL1</h3>
+<pre><code class="language-powershell"># 检查 WSL 版本
+wsl -l -v
+
+# 转换到 WSL2
+wsl --set-version Ubuntu-22.04 2
+</code></pre>
+
+<h3 id="2-配置-vs-code-远程开发">2. 配置 VS Code 远程开发</h3>
+<p>使用 VS Code 的 Remote - WSL 扩展可以获得更好的开发体验：</p>
+<ul>
+<li>代码补全和语法高亮</li>
+<li>集成终端</li>
+<li>调试支持</li>
+<li>扩展同步</li>
+</ul>
+
+<h3 id="3-定期更新系统">3. 定期更新系统</h3>
+<pre><code class="language-bash"># 更新 WSL 系统
+sudo apt update && sudo apt upgrade -y
+
+# 更新 Hermes
+hermes update
+
+# 更新 Windows
+# 在 Windows 设置中检查更新
+</code></pre>
+
+<h3 id="4-备份配置">4. 备份配置</h3>
+<pre><code class="language-bash"># 备份 Hermes 配置
+tar -czf hermes-backup-$(date +%Y%m%d).tar.gz ~/.hermes/
+
+# 恢复配置
+tar -xzf hermes-backup-YYYYMMDD.tar.gz -C ~/
+</code></pre>
+
+<h2 id="进阶使用">进阶使用</h2>
+
+<h3 id="配置多个-ai-模型">配置多个 AI 模型</h3>
+<pre><code class="language-bash"># 使用交互式配置
+hermes model
+
+# 或者直接编辑配置
+hermes config edit
+</code></pre>
+
+<h3 id="创建自定义技能">创建自定义技能</h3>
+<pre><code class="language-bash"># 查看现有技能
+hermes skills list
+
+# 创建新技能
+mkdir -p ~/.hermes/skills/my-skill
+cd ~/.hermes/skills/my-skill
+
+# 创建 SKILL.md 文件
+cat > SKILL.md << 'EOF'
+---
+name: my-skill
+description: 我的自定义技能
+version: 1.0.0
+---
+
+# 我的技能
+
+## 触发条件
+- 当用户请求...
+
+## 操作步骤
+1. ...
+2. ...
+EOF
+</code></pre>
+
+<h3 id="配置消息平台集成">配置消息平台集成</h3>
+<pre><code class="language-bash"># 配置 Telegram
+hermes gateway setup
+
+# 选择 Telegram 并按提示配置
+# 需要 Telegram Bot Token
+
+# 启动网关
+hermes gateway start
+</code></pre>
+
+<h2 id="参考资源">参考资源</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/windows/wsl/" target="_blank">WSL 官方文档</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/" target="_blank">Hermes Agent 官方文档</a></li>
+<li><a href="https://github.com/NousResearch/hermes-agent" target="_blank">Hermes Agent GitHub</a></li>
+<li><a href="https://github.com/microsoft/WSL" target="_blank">WSL GitHub 仓库</a></li>
+</ul>
+
+<h2 id="总结">总结</h2>
+<p>通过本教程，你已经成功在 Windows 上配置了 WSL 环境并安装了 Hermes Agent。现在你可以：</p>
+<ul>
+<li>在 Windows 上使用完整的 Linux 环境</li>
+<li>运行 Hermes Agent 进行 AI 任务自动化</li>
+<li>集成各种消息平台（Telegram、Discord 等）</li>
+<li>创建自定义技能和工具</li>
+</ul>
+
+<p>如果遇到问题，可以查看官方文档或在 GitHub 上提交 issue。祝你使用愉快！</p>
+
+<hr>
+<p><em>最后更新：2026-07-02</em></p>
+
+  </div>
+  
+</article>
+
+        </div>
+      </div>
+      
+        
+<div class="post-footer">
+  
+    <a href="/post/hermes-agent-open-design-install/" class="post-footer-item">
+      
+        <div class="next">
+          <i class="ri-arrow-left-line"></i>
+          <div class="post-info">
+            <div class="label">
+              下一篇
+            </div>
+            <div class="post-info">
+              Hermes Agent + Open Design 安装使用说明
+            </div>
+          </div>
+        </div>
+      
+    </a>
+  
+</div>
+
+      </div>
+    </div>
+    <div class="site-footer">
+  <div class="site-info">
+    <div class="site-name">Darren.X</div>
+    <div class="site-description">给岁月以文明，而不是给文明以岁月 - 刘慈欣</div>
+  </div>
+  <div class="site-links">
+    
+      <a href="https://github.com/DarrenHost" target="_blank" rel="noopener">
+        <i class="ri-github-line"></i>
+      </a>
+    
+      <a href="/atom.xml" target="_blank" rel="noopener">
+        <i class="ri-rss-line"></i>
+      </a>
+    
+  </div>
+  <div class="site-copyright">
+    <a href="https://github.com/getgridea/gridea" target="_blank" rel="noopener">Powered by Gridea</a> | 
+    <a href="/post/about/">关于</a>
+  </div>
+</div>
+
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+      <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/js-md4@0.3.2/build/md4.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js"></script>
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+              delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+              ],
+              throwOnError: false
+            });
+          });
+        </script>
+      
+    
+  </body>
+</html>
