@@ -889,8 +889,15 @@ td {
   padding: 40px 24px;
   color: #868e96;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  gap: 16px;
+}
+.site-footer .site-info,
+.site-footer .site-links,
+.site-footer .site-copyright {
+  margin: 0 12px;
 }
 .rss {
   display: inline-flex;
