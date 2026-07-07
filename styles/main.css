@@ -889,15 +889,14 @@ td {
   padding: 40px 24px;
   color: #868e96;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 .site-footer .site-info,
 .site-footer .site-links,
 .site-footer .site-copyright {
-  margin: 0 12px;
+  margin: 0;
 }
 .rss {
   display: inline-flex;
