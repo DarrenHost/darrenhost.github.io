@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="window-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d3748;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a202c;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="0" dy="4" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bg-gradient)"/>
+  
+  <!-- Windows Logo -->
+  <g transform="translate(100, 120)" filter="url(#shadow)">
+    <rect x="0" y="0" width="60" height="60" fill="#0078d4" rx="4"/>
+    <rect x="65" y="0" width="60" height="60" fill="#0078d4" rx="4"/>
+    <rect x="0" y="65" width="60" height="60" fill="#0078d4" rx="4"/>
+    <rect x="65" y="65" width="60" height="60" fill="#0078d4" rx="4"/>
+  </g>
+  
+  <!-- Arrow -->
+  <g transform="translate(260, 170)">
+    <path d="M0 20 L40 20 L40 10 L60 25 L40 40 L40 30 L0 30 Z" fill="white" opacity="0.8"/>
+  </g>
+  
+  <!-- Terminal Window -->
+  <g transform="translate(340, 100)" filter="url(#shadow)">
+    <rect x="0" y="0" width="360" height="200" fill="url(#window-gradient)" rx="8"/>
+    <rect x="0" y="0" width="360" height="30" fill="#2d3748" rx="8"/>
+    <circle cx="15" cy="15" r="5" fill="#ff5f56"/>
+    <circle cx="35" cy="15" r="5" fill="#ffbd2e"/>
+    <circle cx="55" cy="15" r="5" fill="#27c93f"/>
+    <text x="180" y="20" font-family="monospace" font-size="12" fill="#a0aec0" text-anchor="middle">WSL Ubuntu</text>
+    
+    <!-- Terminal Content -->
+    <text x="15" y="55" font-family="monospace" font-size="11" fill="#68d391">$ curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</text>
+    <text x="15" y="75" font-family="monospace" font-size="11" fill="#a0aec0">Installing Hermes Agent...</text>
+    <text x="15" y="95" font-family="monospace" font-size="11" fill="#a0aec0">✓ Python dependencies installed</text>
+    <text x="15" y="115" font-family="monospace" font-size="11" fill="#a0aec0">✓ Node.js dependencies installed</text>
+    <text x="15" y="135" font-family="monospace" font-size="11" fill="#a0aec0">✓ Configuration complete</text>
+    <text x="15" y="155" font-family="monospace" font-size="11" fill="#68d391">$ hermes --version</text>
+    <text x="15" y="175" font-family="monospace" font-size="11" fill="#f7fafc">Hermes Agent v2.1.0</text>
+  </g>
+  
+  <!-- Hermes Logo -->
+  <g transform="translate(500, 320)">
+    <circle cx="0" cy="0" r="25" fill="white" opacity="0.2"/>
+    <text x="0" y="8" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">H</text>
+  </g>
+  
+  <!-- Title Text -->
+  <text x="400" y="50" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="white" text-anchor="middle">Windows + WSL + Hermes Agent</text>
+  <text x="400" y="380" font-family="Arial, sans-serif" font-size="14" fill="white" opacity="0.8" text-anchor="middle">在 Windows 上开启 Linux 子系统，一键安装 AI Agent</text>
+</svg>
