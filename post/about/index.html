@@ -7,7 +7,9 @@
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="关于 | Darren.X - Atom Feed" href="/atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Droid+Serif:400;700" rel="stylesheet">
 
 
 
@@ -24,6 +26,7 @@
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
   <body>
+    <canvas id="matrix-canvas"></canvas>
     <div class="main">
       <div class="main-content">
         <div class="site-header">
@@ -213,6 +216,32 @@ https://darrenhost.github.io 域名于2020年9月8日注册，已经预付10年�
         });
       });
 
+    </script>
+      <script>
+      const canvas = document.getElementById('matrix-canvas');
+      if (canvas) {
+        const ctx = canvas.getContext('2d');
+        function resizeCanvas() { canvas.width = innerWidth; canvas.height = innerHeight; }
+        resizeCanvas();
+        addEventListener('resize', resizeCanvas);
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%アイウエオカキクケコサシスセソ';
+        const fs = 14;
+        let cols = Math.floor(canvas.width / fs);
+        let drops = Array(cols).fill(1);
+        function draw() {
+          ctx.fillStyle = 'rgba(10, 10, 15, 0.05)';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          ctx.fillStyle = '#00ff88';
+          ctx.font = fs + 'px monospace';
+          for (let i = 0; i < drops.length; i++) {
+            const text = chars[Math.floor(Math.random() * chars.length)];
+            ctx.fillText(text, i * fs, drops[i] * fs);
+            if (drops[i] * fs > canvas.height && Math.random() > 0.975) drops[i] = 0;
+            drops[i]++;
+          }
+        }
+        setInterval(draw, 50);
+      }
     </script>
   </body>
 </html>

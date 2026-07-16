@@ -63,6 +63,7 @@
   </style>
 </head>
 <body>
+    <canvas id="matrix-canvas"></canvas>
   <div class="box">
     <div class="number">4 0 4</div>
     <div class="text">
@@ -85,5 +86,31 @@
     var back = document.getElementById('back')
     back.onclick = function() { console.log('run...'); history.back() }
   </script>
-</body>
+    <script>
+      const canvas = document.getElementById('matrix-canvas');
+      if (canvas) {
+        const ctx = canvas.getContext('2d');
+        function resizeCanvas() { canvas.width = innerWidth; canvas.height = innerHeight; }
+        resizeCanvas();
+        addEventListener('resize', resizeCanvas);
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%アイウエオカキクケコサシスセソ';
+        const fs = 14;
+        let cols = Math.floor(canvas.width / fs);
+        let drops = Array(cols).fill(1);
+        function draw() {
+          ctx.fillStyle = 'rgba(10, 10, 15, 0.05)';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          ctx.fillStyle = '#00ff88';
+          ctx.font = fs + 'px monospace';
+          for (let i = 0; i < drops.length; i++) {
+            const text = chars[Math.floor(Math.random() * chars.length)];
+            ctx.fillText(text, i * fs, drops[i] * fs);
+            if (drops[i] * fs > canvas.height && Math.random() > 0.975) drops[i] = 0;
+            drops[i]++;
+          }
+        }
+        setInterval(draw, 50);
+      }
+    </script>
+  </body>
 </html>

@@ -1,106 +1,137 @@
-<html>
-  <head>
-  <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Darren.X</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1627178711416">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
-<link rel="stylesheet" href="/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="Darren.X - Atom Feed" href="/atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
-
-
-
-  <meta name="description" content="给岁月以文明，而不是给文明以岁月 - 刘慈欣" />
-  </head>
-  <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="">
-  <img class="avatar" src="/images/avatar.png?v=1627178711416" alt="">
-  </a>
-  <h1 class="site-title">
-    Darren.X
-  </h1>
-  <p class="site-description">
-    给岁月以文明，而不是给文明以岁月 - 刘慈欣
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="/" class="menu">
-          首页
-        </a>
-      
-    
-      
-        <a href="/tag/maker" class="menu">
-          玩物
-        </a>
-      
-    
-      
-        <a href="/tag/coding" class="menu">
-          代码
-        </a>
-      
-    
-      
-        <a href="/archives" class="menu">
-          归档
-        </a>
-      
-    
-      
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about" class="menu">
-          关于
-        </a>
-      
-    
-  </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-</div>
-
-
-        <div class="tags-container">
-          
-            <a class="tag" href="/tag/7y9671xCb/">格斗机器人</a>
-          
-            <a class="tag" href="/tag/maker/">玩物</a>
-          
-            <a class="tag" href="/tag/7tXi0mByB/">物联网</a>
-          
-            <a class="tag" href="/tag/coding/">代码</a>
-          
-        </div>
-
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank"> &nbsp;Gridea </a>
-  <a class="rss" href="/atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
-</div>
-
-      </div>
-    </div>
+1|<html>
+2|  <head>
+3|  <meta charset="utf-8" />
+4|<meta name="viewport" content="width=device-width, initial-scale=1" />
+5|<title>Darren.X</title>
+6|<link rel="shortcut icon" href="/favicon.ico?v=1627178711416">
+7|<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+8|<link rel="stylesheet" href="/styles/main.css">
+9|<link rel="alternate" type="application/atom+xml" title="Darren.X - Atom Feed" href="/atom.xml">
+10|<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Droid+Serif:400;700" rel="stylesheet">
+11|
+12|
+13|
+14|  <meta name="description" content="给岁月以文明，而不是给文明以岁月 - 刘慈欣" />
+15|  </head>
+16|  <body>
+    <canvas id="matrix-canvas"></canvas>
+17|    <div class="main">
+18|      <div class="main-content">
+19|        <div class="site-header">
+20|  <a href="">
+21|  <img class="avatar" src="/images/avatar.png?v=1627178711416" alt="">
+22|  </a>
+23|  <h1 class="site-title">
+24|    Darren.X
+25|  </h1>
+26|  <p class="site-description">
+27|    给岁月以文明，而不是给文明以岁月 - 刘慈欣
+28|  </p>
+29|  <div class="menu-container">
+30|    
+31|      
+32|        <a href="/" class="menu">
+33|          首页
+34|        </a>
+35|      
+36|    
+37|      
+38|        <a href="/tag/maker" class="menu">
+39|          玩物
+40|        </a>
+41|      
+42|    
+43|      
+44|        <a href="/tag/coding" class="menu">
+45|          代码
+46|        </a>
+47|      
+48|    
+49|      
+50|        <a href="/archives" class="menu">
+51|          归档
+52|        </a>
+53|      
+54|    
+55|      
+56|        <a href="/tags" class="menu">
+57|          标签
+58|        </a>
+59|      
+60|    
+61|      
+62|        <a href="/post/about" class="menu">
+63|          关于
+64|        </a>
+65|      
+66|    
+67|  </div>
+68|  <div class="social-container">
+69|    
+70|      
+71|    
+72|      
+73|    
+74|      
+75|    
+76|      
+77|    
+78|      
+79|    
+80|  </div>
+81|</div>
+82|
+83|
+84|        <div class="tags-container">
+85|          
+86|            <a class="tag" href="/tag/7y9671xCb/">格斗机器人</a>
+87|          
+88|            <a class="tag" href="/tag/maker/">玩物</a>
+89|          
+90|            <a class="tag" href="/tag/7tXi0mByB/">物联网</a>
+91|          
+92|            <a class="tag" href="/tag/coding/">代码</a>
+93|          
+94|        </div>
+95|
+96|        <div class="site-footer">
+97|  Powered by <a href="https://github.com/getgridea/gridea" target="_blank"> &nbsp;Gridea </a>
+98|  <a class="rss" href="/atom.xml" target="_blank">
+99|    <i class="ri-rss-line"></i> RSS
+100|  </a>
+101|</div>
+102|
+103|      </div>
+104|    </div>
+105|    <script>
+      // Matrix rain effect
+      const canvas = document.getElementById('matrix-canvas');
+      if (canvas) {
+        const ctx = canvas.getContext('2d');
+        function resizeCanvas() { canvas.width = innerWidth; canvas.height = innerHeight; }
+        resizeCanvas();
+        addEventListener('resize', resizeCanvas);
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%アイウエオカキクケコサシスセソ';
+        const fs = 14;
+        let cols = Math.floor(canvas.width / fs);
+        let drops = Array(cols).fill(1);
+        function draw() {
+          ctx.fillStyle = 'rgba(10, 10, 15, 0.05)';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          ctx.fillStyle = '#00ff88';
+          ctx.font = fs + 'px monospace';
+          for (let i = 0; i < drops.length; i++) {
+            const text = chars[Math.floor(Math.random() * chars.length)];
+            ctx.fillText(text, i * fs, drops[i] * fs);
+            if (drops[i] * fs > canvas.height && Math.random() > 0.975) drops[i] = 0;
+            drops[i]++;
+          }
+        }
+        setInterval(draw, 50);
+      }
+    </script>
   </body>
-</html>
+106|</html>
+107|

@@ -1247,5 +1247,31 @@
         <p>AI工具使用情况调研 · 综合看板 · 2026年6月</p>
         <p class="mt-1">基于65份有效问卷数据生成</p>
     </div>
-</body>
+    <script>
+      const canvas = document.getElementById('matrix-canvas');
+      if (canvas) {
+        const ctx = canvas.getContext('2d');
+        function resizeCanvas() { canvas.width = innerWidth; canvas.height = innerHeight; }
+        resizeCanvas();
+        addEventListener('resize', resizeCanvas);
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%アイウエオカキクケコサシスセソ';
+        const fs = 14;
+        let cols = Math.floor(canvas.width / fs);
+        let drops = Array(cols).fill(1);
+        function draw() {
+          ctx.fillStyle = 'rgba(10, 10, 15, 0.05)';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          ctx.fillStyle = '#00ff88';
+          ctx.font = fs + 'px monospace';
+          for (let i = 0; i < drops.length; i++) {
+            const text = chars[Math.floor(Math.random() * chars.length)];
+            ctx.fillText(text, i * fs, drops[i] * fs);
+            if (drops[i] * fs > canvas.height && Math.random() > 0.975) drops[i] = 0;
+            drops[i]++;
+          }
+        }
+        setInterval(draw, 50);
+      }
+    </script>
+  </body>
 </html>
