@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download - Darren.X</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #0a0a0f;
+      --bg-card: #10101e;
+      --neon-green: #00ff88;
+      --neon-cyan: #00d4ff;
+      --neon-purple: #b44aff;
+      --text-primary: #e8e8f0;
+      --text-muted: #555570;
+      --border: #1a1a30;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-display: 'Space Grotesk', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-mono);
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    /* Grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.3;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .header-icon {
+      font-size: 48px;
+      color: var(--neon-green);
+      margin-bottom: 16px;
+      text-shadow: 0 0 20px rgba(0,255,136,0.5);
+    }
+    .header h1 {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+    .header h1 span {
+      color: var(--neon-green);
+    }
+    .header p {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    /* Back link */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      margin-bottom: 32px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--neon-green); }
+    /* App list */
+    .app-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .app-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .app-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--neon-green), var(--neon-cyan));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .app-card:hover {
+      border-color: var(--neon-green);
+      transform: translateX(4px);
+      box-shadow: 0 0 30px rgba(0,255,136,0.08);
+    }
+    .app-card:hover::before { opacity: 1; }
+    .app-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(0,255,136,0.1), rgba(0,212,255,0.1));
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+    .app-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .app-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .app-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .app-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .app-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: transparent;
+      border: 1px solid var(--neon-green);
+      color: var(--neon-green);
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .download-btn:hover {
+      background: var(--neon-green);
+      color: var(--bg-deep);
+      box-shadow: 0 0 20px rgba(0,255,136,0.3);
+    }
+    /* Empty state */
+    .empty {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+    }
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+    .footer a { color: var(--neon-green); text-decoration: none; }
+    /* Responsive */
+    @media (max-width: 600px) {
+      .app-card { flex-direction: column; align-items: flex-start; text-align: left; }
+      .download-btn { width: 100%; justify-content: center; }
+      .header h1 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="back-link">
+      <i class="ri-arrow-left-line"></i> 返回首页
+    </a>
+
+    <div class="header">
+      <div class="header-icon"><i class="ri-download-cloud-2-line"></i></div>
+      <h1>APP <span>Download</span></h1>
+      <p>应用下载中心 · 所有 APK 均经过签名验证</p>
+    </div>
+
+    <div class="app-list" id="app-list">
+      <!-- Apps rendered by JS -->
+    </div>
+
+    <div class="footer">
+      <p>Powered by <a href="https://www.darren.host">Darren.X</a> · © 2025</p>
+    </div>
+  </div>
+
+  <script>
+    // ============================================
+    // APK 下载列表 - 新增 APK 在这里添加即可
+    // ============================================
+    const APPS = [
+      {
+        name: "Printer Test",
+        version: "v2.0.20211103",
+        size: "11 MB",
+        date: "2025-07-18",
+        icon: "🖨️",
+        desc: "打印机测试工具，用于检测打印机连接和打印功能",
+        url: "/print.apk"
+      },
+      // 新增 APK 示例：
+      // {
+      //   name: "App Name",
+      //   version: "v1.0",
+      //   size: "5 MB",
+      //   date: "2025-07-20",
+      //   icon: "📱",
+      //   desc: "应用描述",
+      //   url: "/filename.apk"
+      // },
+    ];
+
+    // Render
+    const list = document.getElementById('app-list');
+    if (APPS.length === 0) {
+      list.innerHTML = '<div class="empty"><p>暂无应用</p></div>';
+    } else {
+      list.innerHTML = APPS.map(app => `
+        <div class="app-card">
+          <div class="app-icon">${app.icon}</div>
+          <div class="app-info">
+            <div class="app-name">${app.name}</div>
+            <div class="app-meta">
+              <span><i class="ri-price-tag-3-line"></i> ${app.version}</span>
+              <span><i class="ri-hard-drive-2-line"></i> ${app.size}</span>
+              <span><i class="ri-calendar-line"></i> ${app.date}</span>
+            </div>
+            <div class="app-desc">${app.desc}</div>
+          </div>
+          <a href="${app.url}" class="download-btn" download>
+            <i class="ri-download-2-line"></i> 下载
+          </a>
+        </div>
+      `).join('');
+    }
+  </script>
+</body>
+</html>
